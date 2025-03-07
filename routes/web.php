@@ -1,23 +1,16 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+// Página de login
+Route::get('/', [AuthController::class, 'showLogin'])->name('auth.login');
+Route::post('/', [AuthController::class, 'login'])->name('auth.login.process');
+Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-// Example Routes
-Route::view('/', 'landing');
-Route::match(['get', 'post'], '/dashboard', function(){
-    return view('dashboard');
+// Agrupar rutas protegidas con el middleware auth
+Route::middleware(['auth'])->group(function () {
+    Route::get('/inicio', function () {
+        return view('inicio'); // Asegúrate de tener esta vista en resources/views/inicio.blade.php
+    })->name('inicio');
 });
-Route::view('/pages/slick', 'pages.slick');
-Route::view('/pages/datatables', 'pages.datatables');
-Route::view('/pages/blank', 'pages.blank');

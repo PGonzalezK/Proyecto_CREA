@@ -26,9 +26,6 @@
         <!-- You can include a specific file from public/css/themes/ folder to alter the default color theme of the template. eg: -->
         <!-- <link rel="stylesheet" id="css-theme" href="{{ mix('css/themes/xwork.css') }}"> -->
         @yield('css_after')
-
-        <!-- Scripts -->
-        <script>window.Laravel = {!! json_encode(['csrfToken' => csrf_token(),]) !!};</script>
     </head>
     <body>
         <!-- Page Container -->
@@ -83,7 +80,7 @@
             <!-- Side Overlay-->
             <aside id="side-overlay">
                 <!-- Side Header -->
-                <div class="bg-image" style="background-image: url('{{ asset('media/various/bg_side_overlay_header.jpg') }}');">
+                <div class="bg-image" style="">
                     <div class="bg-primary-op">
                         <div class="content-header">
                             <!-- User Avatar -->

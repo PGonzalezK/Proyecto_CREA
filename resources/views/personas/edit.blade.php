@@ -26,12 +26,15 @@
                     <label>RUT</label>
                     <input type="text" name="rut" class="form-control" value="{{ $persona->rut }}" required>
                 </div>
+                <div class="mb-3">
+                    <label>Fecha de Caducidad del Carnet</label>
+                    <input type="date" class="form-control" name="fecha_carnet" value="{{ $persona->fecha_carnet ?? '' }}" required>
+                </div>
 
                 <hr>
                 <h5 class="mb-3">Actualizar documentos</h5>
-
                 <div class="row">
-                    @foreach(['carta_compromiso', 'contrato_construccion', 'post_subsidio', 'te1', 'tc6', 'reduccion', 'permiso', 'recepcion_dom', 'prohibicion_1', 'prohibicion_2', 'autoricese', 'boleta_garantia_asistencia', 'boleta_garantia_constructora'] as $doc)
+                    @foreach(['carnet_identidad', 'carta_compromiso', 'contrato_construccion', 'te1', 'tc6', 'reduccion', 'permiso', 'recepcion_dom', 'prohibicion_1', 'prohibicion_2', 'autoricese', 'boleta_garantia_asistencia', 'boleta_garantia_constructora'] as $doc)
                         <div class="col-md-4 mb-3">
                             <label>{{ ucfirst(str_replace('_', ' ', $doc)) }}</label>
                             <input type="file" class="form-control" name="{{ $doc }}">

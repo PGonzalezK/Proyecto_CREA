@@ -12,7 +12,26 @@
                 <li class="list-group-item"><strong>Nombre:</strong> {{ $persona->nombre }}</li>
                 <li class="list-group-item"><strong>Apellido:</strong> {{ $persona->apellido }}</li>
                 <li class="list-group-item"><strong>RUT:</strong> {{ $persona->rut }}</li>
-                
+                <li class="list-group-item">
+                    <strong>Fecha de Caducidad del Carnet:</strong>
+                    @if($persona->fecha_carnet)
+                        @php
+                            $hoy = \Carbon\Carbon::now();
+                            $fecha_carnet = \Carbon\Carbon::parse($persona->fecha_carnet);
+                            $dias_restantes = $hoy->diffInDays($fecha_carnet, false);
+                        @endphp
+                        
+                        @if($dias_restantes <= 30 && $dias_restantes >= 0)
+                            <span class="text-danger">{{ $fecha_carnet->format('d-m-Y') }} (Vence en {{ $dias_restantes }} días)</span>
+                        @elseif($dias_restantes < 0)
+                            <span class="text-danger">{{ $fecha_carnet->format('d-m-Y') }} (¡Vencido!)</span>
+                        @else
+                            <span>{{ $fecha_carnet->format('d-m-Y') }}</span>
+                        @endif
+                    @else
+                        <span class="text-muted">No disponible</span>
+                    @endif
+                </li>
             </ul>
 
             <h5>Documentos</h5>

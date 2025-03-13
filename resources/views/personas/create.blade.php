@@ -24,6 +24,13 @@
                         <input name="rut" id="rut" class="form-control" placeholder="Ingrese el RUT" required>
                     </li>
                     <li class="list-group-item">
+                        <label for="carnet_identidad" class="form-label">Carnet de identidad</label>
+                        <div class="d-flex gap-3">
+                            <input type="file" class="form-control" name="carnet_identidad" id="carnet_identidad" required>
+                            <input type="date" class="form-control" name="fecha_carnet" id="fecha_carnet" required>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
                         <label for="carta_compromiso" class="form-label">Carta Compromiso</label>
                         <input type="file" class="form-control" name="carta_compromiso" id="carta_compromiso" required>
                     </li>
@@ -53,4 +60,14 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const fechaCarnetInput = document.getElementById('fecha_carnet');
+        
+        //fechaCarnetInput.addEventListener('change', function () {
+        //    alert('Fecha ingresada para Carnet de Identidad: ' + this.value);
+        //});
+    });
+</script>
+
 @endsection

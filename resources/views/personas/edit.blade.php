@@ -27,6 +27,10 @@
                     <input type="text" name="rut" class="form-control" value="{{ $persona->rut }}" required>
                 </div>
                 <div class="mb-3">
+                    <label>Código Serviu</label>
+                    <input type="text" name="codigo_serviu" class="form-control" value="{{ $persona->codigo_serviu }}">
+                </div>
+                <div class="mb-3">
                     <label>Fecha de Caducidad del Carnet</label>
                     <input type="date" class="form-control" name="fecha_carnet" value="{{ $persona->fecha_carnet ?? '' }}" required>
                 </div>

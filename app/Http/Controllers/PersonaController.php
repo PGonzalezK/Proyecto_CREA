@@ -44,7 +44,8 @@ class PersonaController extends Controller
             'apellido' => 'required|string|max:255',
             'rut' => 'required|string|unique:personas,rut',
             'fecha_carnet' => 'required|date', // Validación de fecha
-            'carnet_identidad' => 'required|file|mimes:pdf,jpg,png', // Validar archivo del carnet
+            'carnet_identidad' => 'required|file|mimes:pdf,jpg,png',
+            'codigo_serviu' => 'nullable|string|max:255', // Validar archivo del carnet
 
             // validación archivos
             'carta_compromiso' => 'required|file|mimes:pdf,jpg,png',
@@ -62,7 +63,7 @@ class PersonaController extends Controller
             'boleta_garantia_constructora' => 'file|mimes:pdf,jpg,png',
         ]);
 
-        $datos = $request->only(['nombre', 'apellido', 'rut', 'fecha_carnet']);
+        $datos = $request->only(['nombre', 'apellido', 'rut','codigo_serviu', 'fecha_carnet']);
 
         // Guardar archivo de carnet de identidad
         if ($request->hasFile('carnet_identidad')) {
@@ -111,10 +112,11 @@ class PersonaController extends Controller
             'apellido' => 'required|string|max:255',
             'rut' => 'required|string|unique:personas,rut,' . $persona->id,
             'fecha_carnet' => 'required|date',
-            'carnet_identidad' => 'file|mimes:pdf,jpg,png', // Validar archivo del carnet
+            'carnet_identidad' => 'file|mimes:pdf,jpg,png',
+            'codigo_serviu' => 'nullable|string|max:255',  
         ]);
 
-        $datos = $request->only(['nombre', 'apellido', 'rut', 'fecha_carnet']);
+        $datos = $request->only(['nombre', 'apellido', 'rut', 'codigo_serviu', 'fecha_carnet']);
 
         // Si se sube un nuevo carnet, lo actualiza
         if ($request->hasFile('carnet_identidad')) {

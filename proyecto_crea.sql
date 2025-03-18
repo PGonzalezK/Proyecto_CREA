@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-03-2025 a las 21:08:00
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Tiempo de generación: 18-03-2025 a las 02:52:45
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -57,7 +57,10 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2019_12_14_000001_create_personal_access_tokens_table', 1),
 (3, '2025_03_07_151101_create_users_table', 1),
 (4, '2025_03_07_163418_create_personas_table', 2),
-(5, '2025_03_07_193951_add_avatar_to_users_table', 3);
+(5, '2025_03_07_193951_add_avatar_to_users_table', 3),
+(6, '2025_03_13_135214_add_fecha_carnet_to_personas_table', 4),
+(7, '2025_03_13_145929_add_carnet_identidad_to_personas_table', 5),
+(8, '2025_03_18_014631_add_codigo_serviu_to_personas_table', 6);
 
 -- --------------------------------------------------------
 
@@ -88,6 +91,9 @@ CREATE TABLE `personas` (
   `nombre` varchar(255) NOT NULL,
   `apellido` varchar(255) NOT NULL,
   `rut` varchar(255) NOT NULL,
+  `codigo_serviu` varchar(255) DEFAULT NULL,
+  `fecha_carnet` date DEFAULT NULL,
+  `carnet_identidad` varchar(255) DEFAULT NULL,
   `carta_compromiso` varchar(255) DEFAULT NULL,
   `contrato_construccion` varchar(255) DEFAULT NULL,
   `post_subsidio` varchar(255) DEFAULT NULL,
@@ -109,10 +115,14 @@ CREATE TABLE `personas` (
 -- Volcado de datos para la tabla `personas`
 --
 
-INSERT INTO `personas` (`id`, `nombre`, `apellido`, `rut`, `carta_compromiso`, `contrato_construccion`, `post_subsidio`, `te1`, `tc6`, `reduccion`, `permiso`, `recepcion_dom`, `prohibicion_1`, `prohibicion_2`, `autoricese`, `boleta_garantia_asistencia`, `boleta_garantia_constructora`, `created_at`, `updated_at`) VALUES
-(2, 'Pablo', 'Monjes', '20514299-1', 'documentos/SdFAzklNASdbVtr8MxXEQhikYGByk98BL4xEFVht.jpg', 'documentos/Lsgt2ZCrurH8s6Ta0620uSJENvB72hTMD8saj7Pf.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-07 21:47:20', '2025-03-07 21:47:20'),
-(3, 'Bruno', 'Figueroa', '20730760-2', 'documentos/O3yRzJvOUPU6QJYXrhw1mSinjuiOTy97ez3IZKi3.jpg', 'documentos/Tgg7nh3ObmHS2HIbhmNHI242TQCKRe1XW0jFFxnt.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-07 21:47:48', '2025-03-07 21:47:48'),
-(4, 'Pablo', 'Gonzalez', '20520790-2', 'documentos/kRoRnEkuuDF46lUPvKDceBboYxmhtcxzl236D0eL.jpg', 'documentos/7Q4f3MatnQr2tDUeMk1NWSMfjjNqLCnMwNjP48ZN.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-07 21:48:57', '2025-03-07 21:48:57');
+INSERT INTO `personas` (`id`, `nombre`, `apellido`, `rut`, `codigo_serviu`, `fecha_carnet`, `carnet_identidad`, `carta_compromiso`, `contrato_construccion`, `post_subsidio`, `te1`, `tc6`, `reduccion`, `permiso`, `recepcion_dom`, `prohibicion_1`, `prohibicion_2`, `autoricese`, `boleta_garantia_asistencia`, `boleta_garantia_constructora`, `created_at`, `updated_at`) VALUES
+(2, 'Pablo', 'Monjes', '20514299-1', NULL, '2025-03-14', NULL, 'documentos/SdFAzklNASdbVtr8MxXEQhikYGByk98BL4xEFVht.jpg', 'documentos/Lsgt2ZCrurH8s6Ta0620uSJENvB72hTMD8saj7Pf.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-07 21:47:20', '2025-03-07 21:47:20'),
+(3, 'Bruno', 'Figueroa', '20730760-2', NULL, NULL, NULL, 'documentos/O3yRzJvOUPU6QJYXrhw1mSinjuiOTy97ez3IZKi3.jpg', 'documentos/Tgg7nh3ObmHS2HIbhmNHI242TQCKRe1XW0jFFxnt.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-07 21:47:48', '2025-03-07 21:47:48'),
+(4, 'Pablo', 'Gonzalez', '20520790-2', NULL, NULL, NULL, 'documentos/kRoRnEkuuDF46lUPvKDceBboYxmhtcxzl236D0eL.jpg', 'documentos/7Q4f3MatnQr2tDUeMk1NWSMfjjNqLCnMwNjP48ZN.jpg', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-07 21:48:57', '2025-03-07 21:48:57'),
+(5, 'juanito', 'perez', '12345678-2', NULL, NULL, NULL, 'documentos/liBkDTs6C687pd47ooYCiM2IXmSR8A3DjYDDoPEi.pdf', 'documentos/Ca5SEcKbZF7vDP53CyinTPkETwgisxtasl24t99M.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-13 17:35:15', '2025-03-13 17:35:15'),
+(6, 'juanita', 'perez', '20222000-2', NULL, '2025-03-15', NULL, 'documentos/3rBLliXmwASjnK2DitNvS3YGNbTUTp1x8Fb0a10h.pdf', 'documentos/ztYLQFtID95Y5a1caWhrWkijyqqZExatVEpOTHXN.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-13 17:42:27', '2025-03-13 17:42:27'),
+(7, 'julius', 'oka', '20240440-2', NULL, '2025-03-22', 'documentos/Ze69xvVDjuhE8cLo1sVgA26u4x4uvVfYrlKyxFPo.pdf', 'documentos/zdrTe3CXflfckHDTSFIMeDgAqywS49gl1gapWchz.pdf', 'documentos/p28x9dwt1HGvuyI4aViTBJCOE2nt1LFirjEk0Y1B.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-13 18:12:30', '2025-03-18 00:29:55'),
+(8, 'juan', 'alvarez', '20988922-3', NULL, '2025-03-27', 'documentos/leNntsMHwQQ6fTtPwSY1tMmFp0ipoxRMqps1WUVs.pdf', 'documentos/Y3YTVFWLoDo3qdxEgXGwAnxa389sJDASHDV7FSkY.pdf', 'documentos/OAuOCf0Rs8GT6uF6j9UxdnOSvduKBkzcN9NwG0ZM.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-13 18:16:55', '2025-03-13 18:16:55');
 
 -- --------------------------------------------------------
 
@@ -191,7 +201,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
@@ -203,7 +213,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

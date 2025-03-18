@@ -24,6 +24,10 @@
                         <input name="rut" id="rut" class="form-control" placeholder="Ingrese el RUT" required>
                     </li>
                     <li class="list-group-item">
+                         <label for="codigo_serviu" class="form-label">Código Serviu</label>
+                         <input type="text" name="codigo_serviu" id="codigo_serviu" class="form-control" placeholder="Ingrese el código de grupo">
+                    </li>
+                    <li class="list-group-item">
                         <label for="carnet_identidad" class="form-label">Carnet de identidad</label>
                         <div class="d-flex gap-3">
                             <input type="file" class="form-control" name="carnet_identidad" id="carnet_identidad" required>

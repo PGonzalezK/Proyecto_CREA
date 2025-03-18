@@ -12,6 +12,7 @@
                 <li class="list-group-item"><strong>Nombre:</strong> {{ $persona->nombre }}</li>
                 <li class="list-group-item"><strong>Apellido:</strong> {{ $persona->apellido }}</li>
                 <li class="list-group-item"><strong>RUT:</strong> {{ $persona->rut }}</li>
+                <li class="list-group-item"><strong>Código Serviu:</strong> {{ $persona->codigo_serviu ?? 'No disponible' }}</li>
                 <li class="list-group-item">
                     <strong>Fecha de Caducidad del Carnet:</strong>
                     @if($persona->fecha_carnet)

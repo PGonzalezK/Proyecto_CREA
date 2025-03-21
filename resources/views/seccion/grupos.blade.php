@@ -8,33 +8,38 @@
         </div>
         <div class="card-body">
 
-            @forelse($grupos as $codigo => $personas)
-                <div class="mb-4">
-                    <h5 class="bg-secondary text-white p-2">Código SERVIU: {{ $codigo }}</h5>
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>RUT</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($personas as $persona)
-                                <tr>
-                                    <td>{{ $persona->id }}</td>
-                                    <td>{{ $persona->nombre }}</td>
-                                    <td>{{ $persona->apellido }}</td>
-                                    <td>{{ $persona->rut }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            @empty
+            @if($grupos->isEmpty())
                 <p class="text-center">No hay personas con código SERVIU.</p>
-            @endforelse
+            @else
+                @foreach($grupos as $codigo => $personas)
+                    <details class="mb-3 border rounded p-2">
+                        <summary style="cursor:pointer; font-weight:bold;">
+                            Código SERVIU: {{ $codigo }} ({{ count($personas) }} personas)
+                        </summary>
+
+                        <table class="table table-bordered table-striped mt-2">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>RUT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($personas as $persona)
+                                    <tr>
+                                        <td>{{ $persona->id }}</td>
+                                        <td>{{ $persona->nombre }}</td>
+                                        <td>{{ $persona->apellido }}</td>
+                                        <td>{{ $persona->rut }}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </details>
+                @endforeach
+            @endif
 
         </div>
     </div>

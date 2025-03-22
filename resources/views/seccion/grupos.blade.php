@@ -20,19 +20,27 @@
                         <table class="table table-bordered table-striped mt-2">
                             <thead>
                                 <tr>
-                                    <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th>RUT</th>
+                                    <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($personas as $persona)
                                     <tr>
-                                        <td>{{ $persona->id }}</td>
                                         <td>{{ $persona->nombre }}</td>
                                         <td>{{ $persona->apellido }}</td>
                                         <td>{{ $persona->rut }}</td>
+                                        <td>
+                                            <a href="{{ route('personas.show', $persona->id) }}" class="btn btn-sm btn-info">ver</a>
+                                            <a href="{{ route('personas.edit', $persona->id) }}" class="btn btn-sm btn-warning">Editar</a>
+                                            <form action="{{ route('personas.destroy', $persona->id) }}" method="POST" class="d-inline" onsubmit="return confirm('¿Seguro que desea eliminar esta persona?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>

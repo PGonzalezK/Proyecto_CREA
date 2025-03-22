@@ -19,7 +19,10 @@
             <div class="col-md-10">
                 <div class="block block-rounded">
                     <div class="block-header block-header-default">
-                        <h3 class="block-title">Carnets Próximos a Vencer</h3>
+                        <!-- Color de fondo aplicado -->
+                        <h3 class="block-title" style="background-color: #f8d7da; color: #000; padding: 5px 10px; border-radius: 5px;">
+                            Carnets Próximos a Vencer
+                        </h3>
                     </div>
                     <div class="block-content">
                         <table class="table table-bordered table-striped">
@@ -33,10 +36,22 @@
                             </thead>
                             <tbody>
                                 @foreach($personas as $persona)
+                                    @php
+                                        $hoy = \Carbon\Carbon::now();
+                                        $fecha_carnet = \Carbon\Carbon::parse($persona->fecha_carnet);
+                                        $dias_restantes = $hoy->diffInDays($fecha_carnet, false);
+                                    @endphp
                                     <tr>
                                         <td>{{ $persona->nombre }} {{ $persona->apellido }}</td>
                                         <td>{{ $persona->rut }}</td>
-                                        <td>{{ \Carbon\Carbon::parse($persona->fecha_carnet)->format('d-m-Y') }}</td>
+                                        <td>
+                                            {{ $fecha_carnet->format('d-m-Y') }}
+                                            @if($dias_restantes <= 30 && $dias_restantes >= 0)
+                                                <span class="badge bg-warning text-dark ms-2">Vence en {{ $dias_restantes }} días</span>
+                                            @elseif($dias_restantes < 0)
+                                                <span class="badge bg-danger text-white ms-2">¡Vencido!</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ route('personas.show', $persona->id) }}" class="btn btn-info btn-sm">Ver Perfil</a>
                                         </td>

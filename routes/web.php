@@ -18,8 +18,11 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('seccion/personas', PersonaController::class);
     Route::resource('seccion/grupos', GruposController::class);
+    Route::resource('seccion/cuentas', CuentasController::class);
 
     Route::get('/perfil', [UserController::class, 'show'])->name('perfil.show');
     Route::put('/perfil', [UserController::class, 'update'])->name('perfil.update');
 });
+
+
 

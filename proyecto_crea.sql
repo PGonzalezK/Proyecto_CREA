@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-03-2025 a las 02:52:45
+-- Tiempo de generación: 23-03-2025 a las 23:50:02
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -122,7 +122,12 @@ INSERT INTO `personas` (`id`, `nombre`, `apellido`, `rut`, `codigo_serviu`, `fec
 (5, 'juanito', 'perez', '12345678-2', NULL, NULL, NULL, 'documentos/liBkDTs6C687pd47ooYCiM2IXmSR8A3DjYDDoPEi.pdf', 'documentos/Ca5SEcKbZF7vDP53CyinTPkETwgisxtasl24t99M.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-13 17:35:15', '2025-03-13 17:35:15'),
 (6, 'juanita', 'perez', '20222000-2', NULL, '2025-03-15', NULL, 'documentos/3rBLliXmwASjnK2DitNvS3YGNbTUTp1x8Fb0a10h.pdf', 'documentos/ztYLQFtID95Y5a1caWhrWkijyqqZExatVEpOTHXN.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-13 17:42:27', '2025-03-13 17:42:27'),
 (7, 'julius', 'oka', '20240440-2', NULL, '2025-03-22', 'documentos/Ze69xvVDjuhE8cLo1sVgA26u4x4uvVfYrlKyxFPo.pdf', 'documentos/zdrTe3CXflfckHDTSFIMeDgAqywS49gl1gapWchz.pdf', 'documentos/p28x9dwt1HGvuyI4aViTBJCOE2nt1LFirjEk0Y1B.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-13 18:12:30', '2025-03-18 00:29:55'),
-(8, 'juan', 'alvarez', '20988922-3', NULL, '2025-03-27', 'documentos/leNntsMHwQQ6fTtPwSY1tMmFp0ipoxRMqps1WUVs.pdf', 'documentos/Y3YTVFWLoDo3qdxEgXGwAnxa389sJDASHDV7FSkY.pdf', 'documentos/OAuOCf0Rs8GT6uF6j9UxdnOSvduKBkzcN9NwG0ZM.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-13 18:16:55', '2025-03-13 18:16:55');
+(8, 'juan', 'alvarez', '20988922-3', NULL, '2025-03-27', 'documentos/leNntsMHwQQ6fTtPwSY1tMmFp0ipoxRMqps1WUVs.pdf', 'documentos/Y3YTVFWLoDo3qdxEgXGwAnxa389sJDASHDV7FSkY.pdf', 'documentos/OAuOCf0Rs8GT6uF6j9UxdnOSvduKBkzcN9NwG0ZM.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-13 18:16:55', '2025-03-13 18:16:55'),
+(9, 'pablo', 'monjes', '205142991', '1', '2025-03-21', 'documentos/GM5JOvQ5kSLBuZs6o9aW6RBYKELBBPNS7s6ijtcs.pdf', 'documentos/CyDOZcYPRJfMujfB9D6D7ISwLRxcwiCOiEjX84LZ.pdf', 'documentos/HPNG3Nll7MUlni9yiVJxYa7KMmBC6Mt77VRyWQkF.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-21 05:10:59', '2025-03-21 05:10:59'),
+(10, 'anashe', 'antonio', '12312311-2', '2', '2222-03-13', 'documentos/6UbYjTeQpL3p6oMdMzVYLHgVMUtBKuGszaS22iTz.pdf', 'documentos/ssLkSnuUq5gyW4zKuShTcNcQ0Ad56E94agzZMmpL.pdf', 'documentos/DgDJu1ZNfvfY2p4PIq5veQGaoFLj5bLQqFF66c4E.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-21 05:11:55', '2025-03-21 05:11:55'),
+(11, 'ysy', 'a', '20202020-2', '2', '3221-12-12', 'documentos/TJ5bFczxn3HifzagilY2QvlWtr1Iy2fAIQOruq5J.pdf', 'documentos/KlAKRDZESnSPOjZ3CYrFu8kRMp6BOGJepUUkuKxD.pdf', 'documentos/G06QXFjiw8SUSd43Kh49lulqM9ZfmBZTOHl3VZjC.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-21 05:36:39', '2025-03-21 05:36:39'),
+(12, 'benjamin', 'muro', '27334288-k', 'ds19', '2026-01-13', 'documentos/EFqMJt4CiLXLAl0VEKoRIrqdHtjkSXOk7djxGX0j.pdf', 'documentos/tboKjZBx51rnaytm1ibhRyxXvInL7GUEK55zK8Fv.pdf', 'documentos/s79O8dcpTGqpOvoJW1C2OABxPax6jBT2aiDgv0bi.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-21 05:41:12', '2025-03-21 05:41:12'),
+(13, 'aaaa', 'aaaaaaaaaaa', '112121212', NULL, '2232-12-12', 'documentos/sucJcFMxN4cY2AODyOc75xkWtXhsj5MJ3gqWxQwF.pdf', 'documentos/DnjaS136JeahwsIDa3Pclm4sp4lrN2QSYbayaJW3.pdf', 'documentos/NVF3OzBSc9p9H5ODMcuTYu2dKp9fI3D0X5dieq4K.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-03-22 05:22:02', '2025-03-22 05:22:02');
 
 -- --------------------------------------------------------
 
@@ -213,7 +218,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

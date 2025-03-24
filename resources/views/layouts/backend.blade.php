@@ -120,7 +120,7 @@
                     <!-- Color Themes -->
                     <!-- Toggle Themes functionality initialized in Template._uiHandleTheme() -->
                     <div class="block-content block-content-sm block-content-full bg-body">
-                        <span class="text-uppercase font-size-sm font-w700">Color Themes</span>
+                        <span class="text-uppercase font-size-sm font-w700">Apariencia</span>
                     </div>
                     <div class="block-content block-content-full">
                         <div class="row gutters-tiny text-center">
@@ -131,42 +131,42 @@
                             </div>
                             <div class="col-4 mb-1">
                                 <a class="d-block py-3 text-white font-size-sm font-w600 bg-xwork" data-toggle="theme" data-theme="{{ mix('css/themes/xwork.css') }}" href="#">
-                                    xWork
+                                    Trabajo
                                 </a>
                             </div>
                             <div class="col-4 mb-1">
                                 <a class="d-block py-3 text-white font-size-sm font-w600 bg-xmodern" data-toggle="theme" data-theme="{{ mix('css/themes/xmodern.css') }}" href="#">
-                                    xModern
+                                    Moderno
                                 </a>
                             </div>
                             <div class="col-4 mb-1">
                                 <a class="d-block py-3 text-white font-size-sm font-w600 bg-xeco" data-toggle="theme" data-theme="{{ mix('css/themes/xeco.css') }}" href="#">
-                                    xEco
+                                    Eco
                                 </a>
                             </div>
                             <div class="col-4 mb-1">
                                 <a class="d-block py-3 text-white font-size-sm font-w600 bg-xsmooth" data-toggle="theme" data-theme="{{ mix('css/themes/xsmooth.css') }}" href="#">
-                                    xSmooth
+                                    Suave
                                 </a>
                             </div>
                             <div class="col-4 mb-1">
                                 <a class="d-block py-3 text-white font-size-sm font-w600 bg-xinspire" data-toggle="theme" data-theme="{{ mix('css/themes/xinspire.css') }}" href="#">
-                                    xInspire
+                                    Inspirador
                                 </a>
                             </div>
                             <div class="col-4 mb-1">
                                 <a class="d-block py-3 text-white font-size-sm font-w600 bg-xdream" data-toggle="theme" data-theme="{{ mix('css/themes/xdream.css') }}" href="#">
-                                    xDream
+                                    Sueño
                                 </a>
                             </div>
                             <div class="col-4 mb-1">
                                 <a class="d-block py-3 text-white font-size-sm font-w600 bg-xpro" data-toggle="theme" data-theme="{{ mix('css/themes/xpro.css') }}" href="#">
-                                    xPro
+                                    Pro
                                 </a>
                             </div>
                             <div class="col-4 mb-1">
                                 <a class="d-block py-3 text-white font-size-sm font-w600 bg-xplay" data-toggle="theme" data-theme="{{ mix('css/themes/xplay.css') }}" href="#">
-                                    xPlay
+                                    Juego
                                 </a>
                             </div>
                         </div>
@@ -175,15 +175,15 @@
 
                     <!-- Sidebar -->
                     <div class="block-content block-content-sm block-content-full bg-body">
-                        <span class="text-uppercase font-size-sm font-w700">Sidebar</span>
+                        <span class="text-uppercase font-size-sm font-w700">Barra lateral</span>
                     </div>
                     <div class="block-content block-content-full">
                         <div class="row gutters-tiny text-center">
                             <div class="col-6 mb-1">
-                                <a class="d-block py-3 bg-body-dark font-w600 text-dark" data-toggle="layout" data-action="sidebar_style_dark" href="javascript:void(0)">Dark</a>
+                                <a class="d-block py-3 bg-body-dark font-w600 text-dark" data-toggle="layout" data-action="sidebar_style_dark" href="javascript:void(0)">Oscuro</a>
                             </div>
                             <div class="col-6 mb-1">
-                                <a class="d-block py-3 bg-body-dark font-w600 text-dark" data-toggle="layout" data-action="sidebar_style_light" href="javascript:void(0)">Light</a>
+                                <a class="d-block py-3 bg-body-dark font-w600 text-dark" data-toggle="layout" data-action="sidebar_style_light" href="javascript:void(0)">Claro</a>
                             </div>
                         </div>
                     </div>
@@ -191,28 +191,28 @@
 
                     <!-- Header -->
                     <div class="block-content block-content-sm block-content-full bg-body">
-                        <span class="text-uppercase font-size-sm font-w700">Header</span>
+                        <span class="text-uppercase font-size-sm font-w700">Barra Superior</span>
                     </div>
                     <div class="block-content block-content-full">
                         <div class="row gutters-tiny text-center mb-2">
                             <div class="col-6 mb-1">
-                                <a class="d-block py-3 bg-body-dark font-w600 text-dark" data-toggle="layout" data-action="header_style_dark" href="javascript:void(0)">Dark</a>
+                                <a class="d-block py-3 bg-body-dark font-w600 text-dark" data-toggle="layout" data-action="header_style_dark" href="javascript:void(0)">Oscuro</a>
                             </div>
                             <div class="col-6 mb-1">
-                                <a class="d-block py-3 bg-body-dark font-w600 text-dark" data-toggle="layout" data-action="header_style_light" href="javascript:void(0)">Light</a>
+                                <a class="d-block py-3 bg-body-dark font-w600 text-dark" data-toggle="layout" data-action="header_style_light" href="javascript:void(0)">Claro</a>
                             </div>
-                            <div class="col-6 mb-1">
+                            <!-- <div class="col-6 mb-1">
                                 <a class="d-block py-3 bg-body-dark font-w600 text-dark" data-toggle="layout" data-action="header_mode_fixed" href="javascript:void(0)">Fixed</a>
                             </div>
                             <div class="col-6 mb-1">
                                 <a class="d-block py-3 bg-body-dark font-w600 text-dark" data-toggle="layout" data-action="header_mode_static" href="javascript:void(0)">Static</a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <!-- END Header -->
 
                     <!-- Content -->
-                    <div class="block-content block-content-sm block-content-full bg-body">
+                    <!-- <div class="block-content block-content-sm block-content-full bg-body">
                         <span class="text-uppercase font-size-sm font-w700">Content</span>
                     </div>
                     <div class="block-content block-content-full">
@@ -227,19 +227,19 @@
                                 <a class="d-block py-3 bg-body-dark font-w600 text-dark" data-toggle="layout" data-action="content_layout_full_width" href="javascript:void(0)">Full Width</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- END Content -->
                 </div>
                 <div class="block pull-x mb-0">
                     <!-- Content -->
-                    <div class="block-content block-content-sm block-content-full bg-body">
+                    <!-- <div class="block-content block-content-sm block-content-full bg-body">
                         <span class="text-uppercase font-size-sm font-w700">Heading</span>
                     </div>
                     <div class="block-content">
                         <p>
                             Content..
                         </p>
-                    </div>
+                    </div> -->
                     <!-- END Content -->
                 </div>
             </div>
@@ -357,7 +357,7 @@
                     <!-- Open Search Section -->
                     <!-- Layout API, functionality initialized in Template._uiApiLayout() -->
                     <button type="button" class="btn btn-dual" data-toggle="layout" data-action="header_search_on">
-                        <i class="fa fa-fw fa-search"></i> <span class="ml-1 d-none d-sm-inline-block">Search</span>
+                        <i class="fa fa-fw fa-search"></i> <span class="ml-1 d-none d-sm-inline-block">Buscar</span>
                     </button>
                     <!-- END Open Search Section -->
                 </div>
@@ -381,13 +381,13 @@
                                     <i class="far fa-fw fa-user mr-1"></i> Perfil
                                 </a>
 
-                                <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                                <!-- <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
                                     <span><i class="far fa-fw fa-envelope mr-1"></i> Inbox</span>
                                     <span class="badge badge-primary">3</span>
-                                </a>
-                                <a class="dropdown-item" href="javascript:void(0)">
+                                </a> -->
+                                <!-- <a class="dropdown-item" href="javascript:void(0)">
                                     <i class="far fa-fw fa-file-alt mr-1"></i> Invoices
-                                </a>
+                                </a> -->
                                 <div role="separator" class="dropdown-divider"></div>
 
                                 <!-- Toggle Side Overlay -->
@@ -420,68 +420,28 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0" aria-labelledby="page-header-notifications-dropdown">
                             <div class="bg-primary-darker rounded-top font-w600 text-white text-center p-3">
-                                Notifications
+                                Notificaciones
                             </div>
                             <ul class="nav-items my-2">
                                 <li>
-                                    <a class="text-dark media py-2" href="javascript:void(0)">
-                                        <div class="mx-3">
-                                            <i class="fa fa-fw fa-check-circle text-success"></i>
-                                        </div>
-                                        <div class="media-body font-size-sm pr-2">
-                                            <div class="font-w600">App was updated to v5.6!</div>
-                                            <div class="text-muted font-italic">3 min ago</div>
-                                        </div>
-                                    </a>
+                                    
                                 </li>
                                 <li>
-                                    <a class="text-dark media py-2" href="javascript:void(0)">
-                                        <div class="mx-3">
-                                            <i class="fa fa-fw fa-user-plus text-info"></i>
-                                        </div>
-                                        <div class="media-body font-size-sm pr-2">
-                                            <div class="font-w600">New Subscriber was added! You now have 2580!</div>
-                                            <div class="text-muted font-italic">10 min ago</div>
-                                        </div>
-                                    </a>
+                                    
                                 </li>
                                 <li>
-                                    <a class="text-dark media py-2" href="javascript:void(0)">
-                                        <div class="mx-3">
-                                            <i class="fa fa-fw fa-times-circle text-danger"></i>
-                                        </div>
-                                        <div class="media-body font-size-sm pr-2">
-                                            <div class="font-w600">Server backup failed to complete!</div>
-                                            <div class="text-muted font-italic">30 min ago</div>
-                                        </div>
-                                    </a>
+                                   
                                 </li>
                                 <li>
-                                    <a class="text-dark media py-2" href="javascript:void(0)">
-                                        <div class="mx-3">
-                                            <i class="fa fa-fw fa-exclamation-circle text-warning"></i>
-                                        </div>
-                                        <div class="media-body font-size-sm pr-2">
-                                            <div class="font-w600">You are running out of space. Please consider upgrading your plan.</div>
-                                            <div class="text-muted font-italic">1 hour ago</div>
-                                        </div>
-                                    </a>
+                                   
                                 </li>
                                 <li>
-                                    <a class="text-dark media py-2" href="javascript:void(0)">
-                                        <div class="mx-3">
-                                            <i class="fa fa-fw fa-plus-circle text-primary"></i>
-                                        </div>
-                                        <div class="media-body font-size-sm pr-2">
-                                            <div class="font-w600">New Sale! + $30</div>
-                                            <div class="text-muted font-italic">2 hours ago</div>
-                                        </div>
-                                    </a>
+                                    
                                 </li>
                             </ul>
                             <div class="p-2 border-top">
                                 <a class="btn btn-light btn-block text-center" href="javascript:void(0)">
-                                    <i class="fa fa-fw fa-eye mr-1"></i> View All
+                                    <i class="fa fa-fw fa-eye mr-1"></i> Ver todos
                                 </a>
                             </div>
                         </div>
@@ -511,7 +471,7 @@
                                     <i class="fa fa-fw fa-times-circle"></i>
                                 </button>
                             </div>
-                            <input type="text" class="form-control border-0" placeholder="Search or hit ESC.." id="page-header-search-input" name="page-header-search-input">
+                            <input type="text" class="form-control border-0" placeholder="Buscar o salir con ESC..." id="page-header-search-input" name="page-header-search-input">
                         </div>
                     </form>
                 </div>

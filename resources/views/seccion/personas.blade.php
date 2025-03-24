@@ -4,7 +4,7 @@
 <div class="container py-4">
     <div class="card shadow-xl">
         <div class="card-header bg-primary text-white">
-            <h4 class="mb-0">Lista de Personas</h4>
+            <h4 class="mb-0" style="color:white">Lista de Personas</h4>
         </div>
         <div class="card-body">
             <a href="{{ route('personas.create') }}" class="btn btn-success mb-3">Nueva Persona</a>

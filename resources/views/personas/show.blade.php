@@ -37,7 +37,7 @@
 
             <h5>Documentos</h5>
             <ul class="list-group">
-                @foreach(['carnet_identidad','carta_compromiso', 'contrato_construccion', 'post_subsidio', 'te1', 'tc6', 'reduccion', 'permiso', 'recepcion_dom', 'prohibicion_1', 'prohibicion_2', 'autoricese', 'boleta_garantia_asistencia', 'boleta_garantia_constructora'] as $doc)
+                @foreach(['carnet_identidad','carta_compromiso', 'contrato_construccion', 'anteproyecto', 'te1', 'tc6', 'reduccion', 'permiso', 'recepcion_dom', 'prohibicion_1', 'prohibicion_2', 'autoricese', 'boleta_garantia_asistencia', 'boleta_garantia_constructora'] as $doc)
                     <li class="list-group-item">
                         <strong>{{ ucfirst(str_replace('_', ' ', $doc)) }}:</strong>
                         @if($persona->$doc)

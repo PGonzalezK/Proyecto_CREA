@@ -325,11 +325,11 @@
                                         <span class="nav-main-link-name">Grupos</span>
                                     </a>
                                 </li>
-                                <li class="nav-main-item">
+                                <!-- <li class="nav-main-item">
                                     <a class="nav-main-link{{ request()->is('pages/blank') ? ' active' : '' }}" href="/pages/blank">
                                         <span class="nav-main-link-name">Blank</span>
                                     </a>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
 
@@ -416,14 +416,14 @@
                     <div class="dropdown d-inline-block">
                         <button type="button" class="btn btn-dual" id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-fw fa-bell"></i>
-                            <span class="badge badge-secondary badge-pill">5</span>
+                            <span class="badge badge-secondary badge-pill">0</span>
                         </button>
                         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0" aria-labelledby="page-header-notifications-dropdown">
                             <div class="bg-primary-darker rounded-top font-w600 text-white text-center p-3">
                                 Notificaciones
                             </div>
                             <ul class="nav-items my-2">
-                                <li>
+                                <!-- <li>
                                     
                                 </li>
                                 <li>
@@ -437,7 +437,7 @@
                                 </li>
                                 <li>
                                     
-                                </li>
+                                </li> -->
                             </ul>
                             <div class="p-2 border-top">
                                 <a class="btn btn-light btn-block text-center" href="javascript:void(0)">

@@ -48,7 +48,7 @@
                 <h5 class="mb-3">Otros documentos (opcionales)</h5>
                 
                 <ul class="list-group list-group-flush">
-                    @foreach(['post_subsidio', 'te1', 'tc6', 'reduccion', 'permiso', 'recepcion_dom', 'prohibicion_1', 'prohibicion_2', 'autoricese', 'boleta_garantia_asistencia', 'boleta_garantia_constructora'] as $doc)
+                    @foreach(['anteproyecto', 'te1', 'tc6', 'reduccion', 'permiso', 'recepcion_dom', 'prohibicion_1', 'prohibicion_2', 'autoricese', 'boleta_garantia_asistencia', 'boleta_garantia_constructora'] as $doc)
                         <li class="list-group-item">
                             <label class="form-label">{{ ucfirst(str_replace('_', ' ', $doc)) }}</label>
                             <input type="file" class="form-control" name="{{ $doc }}">

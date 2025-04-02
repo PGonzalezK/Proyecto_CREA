@@ -25,15 +25,21 @@
     21 => 'Illuminate\\View\\ViewServiceProvider',
     22 => 'Facade\\Ignition\\IgnitionServiceProvider',
     23 => 'Fruitcake\\Cors\\CorsServiceProvider',
-    24 => 'Laravel\\Sail\\SailServiceProvider',
-    25 => 'Laravel\\Sanctum\\SanctumServiceProvider',
-    26 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    27 => 'Carbon\\Laravel\\ServiceProvider',
-    28 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    29 => 'App\\Providers\\AppServiceProvider',
-    30 => 'App\\Providers\\AuthServiceProvider',
-    31 => 'App\\Providers\\EventServiceProvider',
-    32 => 'App\\Providers\\RouteServiceProvider',
+    24 => 'InfyOm\\StislaPreset\\StislaPresetServiceProvider',
+    25 => 'InfyOm\\StislaPreset\\FortifyStislaPresetServiceProvider',
+    26 => 'Laravel\\Sail\\SailServiceProvider',
+    27 => 'Laravel\\Sanctum\\SanctumServiceProvider',
+    28 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    29 => 'Laravel\\Ui\\UiServiceProvider',
+    30 => 'Collective\\Html\\HtmlServiceProvider',
+    31 => 'Carbon\\Laravel\\ServiceProvider',
+    32 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    33 => 'Spatie\\Permission\\PermissionServiceProvider',
+    34 => 'App\\Providers\\AppServiceProvider',
+    35 => 'App\\Providers\\AuthServiceProvider',
+    36 => 'App\\Providers\\EventServiceProvider',
+    37 => 'App\\Providers\\RouteServiceProvider',
+    38 => 'Spatie\\Permission\\PermissionServiceProvider',
   ),
   'eager' => 
   array (
@@ -49,13 +55,18 @@
     9 => 'Illuminate\\View\\ViewServiceProvider',
     10 => 'Facade\\Ignition\\IgnitionServiceProvider',
     11 => 'Fruitcake\\Cors\\CorsServiceProvider',
-    12 => 'Laravel\\Sanctum\\SanctumServiceProvider',
-    13 => 'Carbon\\Laravel\\ServiceProvider',
-    14 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    15 => 'App\\Providers\\AppServiceProvider',
-    16 => 'App\\Providers\\AuthServiceProvider',
-    17 => 'App\\Providers\\EventServiceProvider',
-    18 => 'App\\Providers\\RouteServiceProvider',
+    12 => 'InfyOm\\StislaPreset\\StislaPresetServiceProvider',
+    13 => 'InfyOm\\StislaPreset\\FortifyStislaPresetServiceProvider',
+    14 => 'Laravel\\Sanctum\\SanctumServiceProvider',
+    15 => 'Laravel\\Ui\\UiServiceProvider',
+    16 => 'Carbon\\Laravel\\ServiceProvider',
+    17 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    18 => 'Spatie\\Permission\\PermissionServiceProvider',
+    19 => 'App\\Providers\\AppServiceProvider',
+    20 => 'App\\Providers\\AuthServiceProvider',
+    21 => 'App\\Providers\\EventServiceProvider',
+    22 => 'App\\Providers\\RouteServiceProvider',
+    23 => 'Spatie\\Permission\\PermissionServiceProvider',
   ),
   'deferred' => 
   array (
@@ -182,6 +193,10 @@
     'Laravel\\Sail\\Console\\InstallCommand' => 'Laravel\\Sail\\SailServiceProvider',
     'Laravel\\Sail\\Console\\PublishCommand' => 'Laravel\\Sail\\SailServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
+    'html' => 'Collective\\Html\\HtmlServiceProvider',
+    'form' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\HtmlBuilder' => 'Collective\\Html\\HtmlServiceProvider',
+    'Collective\\Html\\FormBuilder' => 'Collective\\Html\\HtmlServiceProvider',
   ),
   'when' => 
   array (
@@ -225,6 +240,9 @@
     array (
     ),
     'Laravel\\Tinker\\TinkerServiceProvider' => 
+    array (
+    ),
+    'Collective\\Html\\HtmlServiceProvider' => 
     array (
     ),
   ),

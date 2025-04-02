@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b28d812c7cf3106bc7c6152cca62f566",
+    "content-hash": "9cfb9e7fe6eb218c2a98380aae54e2fa",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -705,16 +705,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "7.9.2",
+            "version": "7.9.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "d281ed313b989f213357e3be1a179f02196ac99b"
+                "reference": "7b2f29fe81dc4da0ca0ea7d42107a0845946ea77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/d281ed313b989f213357e3be1a179f02196ac99b",
-                "reference": "d281ed313b989f213357e3be1a179f02196ac99b",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/7b2f29fe81dc4da0ca0ea7d42107a0845946ea77",
+                "reference": "7b2f29fe81dc4da0ca0ea7d42107a0845946ea77",
                 "shasum": ""
             },
             "require": {
@@ -811,7 +811,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/guzzle/issues",
-                "source": "https://github.com/guzzle/guzzle/tree/7.9.2"
+                "source": "https://github.com/guzzle/guzzle/tree/7.9.3"
             },
             "funding": [
                 {
@@ -827,20 +827,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-24T11:22:20+00:00"
+            "time": "2025-03-27T13:37:11+00:00"
         },
         {
             "name": "guzzlehttp/promises",
-            "version": "2.0.4",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
-                "reference": "f9c436286ab2892c7db7be8c8da4ef61ccf7b455"
+                "reference": "7c69f28996b0a6920945dd20b3857e499d9ca96c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/promises/zipball/f9c436286ab2892c7db7be8c8da4ef61ccf7b455",
-                "reference": "f9c436286ab2892c7db7be8c8da4ef61ccf7b455",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/7c69f28996b0a6920945dd20b3857e499d9ca96c",
+                "reference": "7c69f28996b0a6920945dd20b3857e499d9ca96c",
                 "shasum": ""
             },
             "require": {
@@ -894,7 +894,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/promises/issues",
-                "source": "https://github.com/guzzle/promises/tree/2.0.4"
+                "source": "https://github.com/guzzle/promises/tree/2.2.0"
             },
             "funding": [
                 {
@@ -910,20 +910,20 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-10-17T10:06:22+00:00"
+            "time": "2025-03-27T13:27:01+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.7.0",
+            "version": "2.7.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "a70f5c95fb43bc83f07c9c948baa0dc1829bf201"
+                "reference": "c2270caaabe631b3b44c85f99e5a04bbb8060d16"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/a70f5c95fb43bc83f07c9c948baa0dc1829bf201",
-                "reference": "a70f5c95fb43bc83f07c9c948baa0dc1829bf201",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/c2270caaabe631b3b44c85f99e5a04bbb8060d16",
+                "reference": "c2270caaabe631b3b44c85f99e5a04bbb8060d16",
                 "shasum": ""
             },
             "require": {
@@ -1010,7 +1010,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.7.0"
+                "source": "https://github.com/guzzle/psr7/tree/2.7.1"
             },
             "funding": [
                 {
@@ -1026,7 +1026,117 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-07-18T11:15:46+00:00"
+            "time": "2025-03-27T12:30:47+00:00"
+        },
+        {
+            "name": "infyomlabs/laravel-generator-helpers",
+            "version": "v3.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/InfyOmLabs/laravel-generator-helpers.git",
+                "reference": "256836551735034cc770efbcfe0e9febb21f76f2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/InfyOmLabs/laravel-generator-helpers/zipball/256836551735034cc770efbcfe0e9febb21f76f2",
+                "reference": "256836551735034cc770efbcfe0e9febb21f76f2",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "InfyOm\\GeneratorHelpers\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mitul Golakiya",
+                    "email": "me@mitul.me"
+                }
+            ],
+            "description": "Helper functions for laravel generator packages",
+            "support": {
+                "issues": "https://github.com/InfyOmLabs/laravel-generator-helpers/issues",
+                "source": "https://github.com/InfyOmLabs/laravel-generator-helpers/tree/v3.1.0"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/infyomlabs",
+                    "type": "opencollective"
+                }
+            ],
+            "time": "2021-10-12T06:10:07+00:00"
+        },
+        {
+            "name": "infyomlabs/laravel-ui-stisla",
+            "version": "v3.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/InfyOmLabs/laravel-ui-stisla.git",
+                "reference": "8a7ab10df1a079892c07909b406b0466e8e62629"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/InfyOmLabs/laravel-ui-stisla/zipball/8a7ab10df1a079892c07909b406b0466e8e62629",
+                "reference": "8a7ab10df1a079892c07909b406b0466e8e62629",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^8.0",
+                "infyomlabs/laravel-generator-helpers": "^3.1",
+                "laravel/ui": "^3.0",
+                "php": "^7.3|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "InfyOm\\StislaPreset\\StislaPresetServiceProvider",
+                        "InfyOm\\StislaPreset\\FortifyStislaPresetServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "InfyOm\\StislaPreset\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mitul Golakiya",
+                    "email": "me@mitul.me"
+                }
+            ],
+            "description": "Laravel frontend preset for Stisla Theme",
+            "keywords": [
+                "laravel",
+                "preset",
+                "stisla"
+            ],
+            "support": {
+                "issues": "https://github.com/InfyOmLabs/laravel-ui-stisla/issues",
+                "source": "https://github.com/InfyOmLabs/laravel-ui-stisla/tree/v3.1.2"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/infyomlabs",
+                    "type": "opencollective"
+                }
+            ],
+            "abandoned": true,
+            "time": "2022-02-03T10:51:30+00:00"
         },
         {
             "name": "laravel/framework",
@@ -1392,6 +1502,140 @@
                 "source": "https://github.com/laravel/tinker/tree/v2.10.1"
             },
             "time": "2025-01-27T14:24:01+00:00"
+        },
+        {
+            "name": "laravel/ui",
+            "version": "v3.4.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/ui.git",
+                "reference": "65ec5c03f7fee2c8ecae785795b829a15be48c2c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/65ec5c03f7fee2c8ecae785795b829a15be48c2c",
+                "reference": "65ec5c03f7fee2c8ecae785795b829a15be48c2c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^8.42|^9.0",
+                "illuminate/filesystem": "^8.42|^9.0",
+                "illuminate/support": "^8.82|^9.0",
+                "illuminate/validation": "^8.42|^9.0",
+                "php": "^7.3|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^6.23|^7.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Ui\\UiServiceProvider"
+                    ]
+                },
+                "branch-alias": {
+                    "dev-master": "3.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Ui\\": "src/",
+                    "Illuminate\\Foundation\\Auth\\": "auth-backend/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel UI utilities and presets.",
+            "keywords": [
+                "laravel",
+                "ui"
+            ],
+            "support": {
+                "source": "https://github.com/laravel/ui/tree/v3.4.6"
+            },
+            "time": "2022-05-20T13:38:08+00:00"
+        },
+        {
+            "name": "laravelcollective/html",
+            "version": "v6.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "64ddfdcaeeb8d332bd98bef442bef81e39c3910b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/64ddfdcaeeb8d332bd98bef442bef81e39c3910b",
+                "reference": "64ddfdcaeeb8d332bd98bef442bef81e39c3910b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "illuminate/routing": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "illuminate/session": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "illuminate/view": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "illuminate/database": "^6.0|^7.0|^8.0|^9.0|^10.0",
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~8.5|^9.5.10"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Collective\\Html\\HtmlServiceProvider"
+                    ],
+                    "aliases": {
+                        "Form": "Collective\\Html\\FormFacade",
+                        "Html": "Collective\\Html\\HtmlFacade"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                },
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "https://laravelcollective.com",
+            "support": {
+                "issues": "https://github.com/LaravelCollective/html/issues",
+                "source": "https://github.com/LaravelCollective/html"
+            },
+            "abandoned": "spatie/laravel-html",
+            "time": "2023-04-25T02:46:11+00:00"
         },
         {
             "name": "league/commonmark",
@@ -2005,16 +2249,16 @@
         },
         {
             "name": "nette/utils",
-            "version": "v4.0.5",
+            "version": "v4.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/utils.git",
-                "reference": "736c567e257dbe0fcf6ce81b4d6dbe05c6899f96"
+                "reference": "ce708655043c7050eb050df361c5e313cf708309"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/utils/zipball/736c567e257dbe0fcf6ce81b4d6dbe05c6899f96",
-                "reference": "736c567e257dbe0fcf6ce81b4d6dbe05c6899f96",
+                "url": "https://api.github.com/repos/nette/utils/zipball/ce708655043c7050eb050df361c5e313cf708309",
+                "reference": "ce708655043c7050eb050df361c5e313cf708309",
                 "shasum": ""
             },
             "require": {
@@ -2085,9 +2329,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/utils/issues",
-                "source": "https://github.com/nette/utils/tree/v4.0.5"
+                "source": "https://github.com/nette/utils/tree/v4.0.6"
             },
-            "time": "2024-08-07T15:39:19+00:00"
+            "time": "2025-03-30T21:06:30+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -2211,142 +2455,6 @@
                 "source": "https://github.com/opis/closure/tree/3.6.3"
             },
             "time": "2022-01-27T09:35:39+00:00"
-        },
-        {
-            "name": "paragonie/random_compat",
-            "version": "v9.99.100",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/paragonie/random_compat.git",
-                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/random_compat/zipball/996434e5492cb4c3edcb9168db6fbb1359ef965a",
-                "reference": "996434e5492cb4c3edcb9168db6fbb1359ef965a",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">= 7"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.*|5.*",
-                "vimeo/psalm": "^1"
-            },
-            "suggest": {
-                "ext-libsodium": "Provides a modern crypto API that can be used to generate random bytes."
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Paragon Initiative Enterprises",
-                    "email": "security@paragonie.com",
-                    "homepage": "https://paragonie.com"
-                }
-            ],
-            "description": "PHP 5.x polyfill for random_bytes() and random_int() from PHP 7",
-            "keywords": [
-                "csprng",
-                "polyfill",
-                "pseudorandom",
-                "random"
-            ],
-            "support": {
-                "email": "info@paragonie.com",
-                "issues": "https://github.com/paragonie/random_compat/issues",
-                "source": "https://github.com/paragonie/random_compat"
-            },
-            "time": "2020-10-15T08:29:30+00:00"
-        },
-        {
-            "name": "paragonie/sodium_compat",
-            "version": "v1.21.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/paragonie/sodium_compat.git",
-                "reference": "bb312875dcdd20680419564fe42ba1d9564b9e37"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/paragonie/sodium_compat/zipball/bb312875dcdd20680419564fe42ba1d9564b9e37",
-                "reference": "bb312875dcdd20680419564fe42ba1d9564b9e37",
-                "shasum": ""
-            },
-            "require": {
-                "paragonie/random_compat": ">=1",
-                "php": "^5.2.4|^5.3|^5.4|^5.5|^5.6|^7|^8"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^3|^4|^5|^6|^7|^8|^9"
-            },
-            "suggest": {
-                "ext-libsodium": "PHP < 7.0: Better performance, password hashing (Argon2i), secure memory management (memzero), and better security.",
-                "ext-sodium": "PHP >= 7.0: Better performance, password hashing (Argon2i), secure memory management (memzero), and better security."
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "autoload.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "ISC"
-            ],
-            "authors": [
-                {
-                    "name": "Paragon Initiative Enterprises",
-                    "email": "security@paragonie.com"
-                },
-                {
-                    "name": "Frank Denis",
-                    "email": "jedisct1@pureftpd.org"
-                }
-            ],
-            "description": "Pure PHP implementation of libsodium; uses the PHP extension if it exists",
-            "keywords": [
-                "Authentication",
-                "BLAKE2b",
-                "ChaCha20",
-                "ChaCha20-Poly1305",
-                "Chapoly",
-                "Curve25519",
-                "Ed25519",
-                "EdDSA",
-                "Edwards-curve Digital Signature Algorithm",
-                "Elliptic Curve Diffie-Hellman",
-                "Poly1305",
-                "Pure-PHP cryptography",
-                "RFC 7748",
-                "RFC 8032",
-                "Salpoly",
-                "Salsa20",
-                "X25519",
-                "XChaCha20-Poly1305",
-                "XSalsa20-Poly1305",
-                "Xchacha20",
-                "Xsalsa20",
-                "aead",
-                "cryptography",
-                "ecdh",
-                "elliptic curve",
-                "elliptic curve cryptography",
-                "encryption",
-                "libsodium",
-                "php",
-                "public-key cryptography",
-                "secret-key cryptography",
-                "side-channel resistant"
-            ],
-            "support": {
-                "issues": "https://github.com/paragonie/sodium_compat/issues",
-                "source": "https://github.com/paragonie/sodium_compat/tree/v1.21.1"
-            },
-            "time": "2024-04-22T22:05:04+00:00"
         },
         {
             "name": "phpoption/phpoption",
@@ -2910,67 +3018,6 @@
             "time": "2025-03-16T03:05:19+00:00"
         },
         {
-            "name": "pusher/pusher-php-server",
-            "version": "7.2.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pusher/pusher-http-php.git",
-                "reference": "148b0b5100d000ed57195acdf548a2b1b38ee3f7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pusher/pusher-http-php/zipball/148b0b5100d000ed57195acdf548a2b1b38ee3f7",
-                "reference": "148b0b5100d000ed57195acdf548a2b1b38ee3f7",
-                "shasum": ""
-            },
-            "require": {
-                "ext-curl": "*",
-                "ext-json": "*",
-                "guzzlehttp/guzzle": "^7.2",
-                "paragonie/sodium_compat": "^1.6|^2.0",
-                "php": "^7.3|^8.0",
-                "psr/log": "^1.0|^2.0|^3.0"
-            },
-            "require-dev": {
-                "overtrue/phplint": "^2.3",
-                "phpunit/phpunit": "^9.3"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Pusher\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Library for interacting with the Pusher REST API",
-            "keywords": [
-                "events",
-                "messaging",
-                "php-pusher-server",
-                "publish",
-                "push",
-                "pusher",
-                "real time",
-                "real-time",
-                "realtime",
-                "rest",
-                "trigger"
-            ],
-            "support": {
-                "issues": "https://github.com/pusher/pusher-http-php/issues",
-                "source": "https://github.com/pusher/pusher-http-php/tree/7.2.7"
-            },
-            "time": "2025-01-06T10:56:20+00:00"
-        },
-        {
             "name": "ralouphie/getallheaders",
             "version": "3.0.3",
             "source": {
@@ -3195,6 +3242,84 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
+        },
+        {
+            "name": "spatie/laravel-permission",
+            "version": "4.4.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/spatie/laravel-permission.git",
+                "reference": "779797a47689d0bc1666e26f566cca44603e56fa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/spatie/laravel-permission/zipball/779797a47689d0bc1666e26f566cca44603e56fa",
+                "reference": "779797a47689d0bc1666e26f566cca44603e56fa",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "^6.0|^7.0|^8.0",
+                "illuminate/container": "^6.0|^7.0|^8.0",
+                "illuminate/contracts": "^6.0|^7.0|^8.0",
+                "illuminate/database": "^6.0|^7.0|^8.0",
+                "php": "^7.2.5|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^8.0|^9.0",
+                "predis/predis": "^1.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Spatie\\Permission\\PermissionServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Spatie\\Permission\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Freek Van der Herten",
+                    "email": "freek@spatie.be",
+                    "homepage": "https://spatie.be",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Permission handling for Laravel 6.0 and up",
+            "homepage": "https://github.com/spatie/laravel-permission",
+            "keywords": [
+                "acl",
+                "laravel",
+                "permission",
+                "permissions",
+                "rbac",
+                "roles",
+                "security",
+                "spatie"
+            ],
+            "support": {
+                "issues": "https://github.com/spatie/laravel-permission/issues",
+                "source": "https://github.com/spatie/laravel-permission/tree/4.4.3"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/spatie",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-10-28T07:33:49+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

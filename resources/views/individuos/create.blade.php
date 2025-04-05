@@ -6,15 +6,16 @@
         <h3 class="page__heading">Crear Individuo</h3>
     </div>
     <div class="section-body">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card shadow">
                     <div class="card-body">
 
+                        {{-- Mensajes de error --}}
                         @if ($errors->any())
                             <div class="alert alert-danger">
-                                <strong>¡Ups!</strong> Revisa los campos obligatorios.<br><br>
-                                <ul>
+                                <strong>¡Ups!</strong> Revisa los campos obligatorios.
+                                <ul class="mb-0 mt-2">
                                     @foreach ($errors->all() as $error)
                                         <li>{{ $error }}</li>
                                     @endforeach
@@ -22,11 +23,17 @@
                             </div>
                         @endif
 
+                        {{-- Formulario --}}
                         <form action="{{ route('individuos.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
+
+                            {{-- Incluye los campos del formulario --}}
                             @include('individuos.form')
-                            <button type="submit" class="btn btn-primary mt-3">Guardar</button>
-                            <a class="btn btn-secondary mt-3" href="{{ route('individuos.index') }}">Volver</a>
+
+                            <div class="mt-4 d-flex justify-content-end">
+                                <a class="btn btn-secondary me-2" href="{{ route('individuos.index') }}">Volver</a>
+                                <button type="submit" class="btn btn-primary">Guardar</button>
+                            </div>
                         </form>
 
                     </div>
@@ -36,4 +43,3 @@
     </div>
 </section>
 @endsection
-

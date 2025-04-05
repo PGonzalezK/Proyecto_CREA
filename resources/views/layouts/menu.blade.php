@@ -8,13 +8,13 @@
     <a class="nav-link" href="/roles">
         <i class=" fas fa-user-lock"></i><span>Roles</span>
     </a>
-    <a class="nav-link" href="/blogs">
+    <!-- <a class="nav-link" href="/blogs">
         <i class=" fas fa-blog"></i><span>Blogs</span>
-    </a>
+    </a> -->
     <a class="nav-link" href="/individuos">
-        <i class=" fas fa-blog"></i><span>individuos</span>
+        <i class=" fas fa-user"></i><span>individuos</span>
     </a>
-    <a class="nav-link" href="/blogs">
-        <i class=" fas fa-blog"></i><span>grupales</span>
+    <a class="nav-link" href="{{ route('individuos.grupales') }}">
+        <i class=" fas fa-layer-group"></i><span>grupales</span>
     </a>
 </li>

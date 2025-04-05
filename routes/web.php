@@ -28,12 +28,14 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('individuos', IndividuoController::class);
+
 
 //y creamos un grupo de rutas protegidas para los controladores
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('blogs', BlogController::class);
+    Route::get('/individuos/grupales', [\App\Http\Controllers\IndividuoGrupalController::class, 'index'])->name('individuos.grupales');
+    Route::resource('individuos', IndividuoController::class);
 
 });

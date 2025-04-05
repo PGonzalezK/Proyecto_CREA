@@ -7,14 +7,21 @@ use Illuminate\Http\Request;
 
 class IndividuoController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:ver-individuo', ['only' => ['index']]);
+        $this->middleware('permission:crear-individuo', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-individuo', ['only' => ['edit','update']]);
+        $this->middleware('permission:borrar-individuo', ['only' => ['destroy']]);
+        $this->middleware('permission:mostrar-individuo', ['only' => ['show']]);
+    }
+
     public function index()
     {
-        // Usamos paginación para que funcione $individuos->links() en la vista
-        $individuos = \App\Models\Individuo::paginate(20); // Puedes cambiar 5 por el número de registros por página
-    
+        $individuos = \App\Models\Individuo::paginate(20);
         return view('individuos.index', compact('individuos'));
     }
-    
+
     public function create()
     {
         return view('individuos.create');
@@ -22,7 +29,6 @@ class IndividuoController extends Controller
 
     public function store(Request $request)
     {
-        // Validación de campos de texto y fecha
         $data = $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
@@ -31,7 +37,6 @@ class IndividuoController extends Controller
             'fecha_carnet' => 'nullable|date',
         ]);
 
-        // Campos de tipo archivo
         $fileFields = [
             'carnet_identidad', 'carta_compromiso', 'contrato_construccion',
             'anteproyecto', 'apruebase', 'cert_electrico',
@@ -104,7 +109,6 @@ class IndividuoController extends Controller
 
     public function destroy(Individuo $individuo)
     {
-        // Opcional: eliminar archivos si se desea
         $fileFields = [
             'carnet_identidad', 'carta_compromiso', 'contrato_construccion',
             'anteproyecto', 'apruebase', 'cert_electrico',

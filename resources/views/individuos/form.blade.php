@@ -15,27 +15,30 @@
     ];
 @endphp
 
-{{-- Campos de texto y fecha --}}
-@foreach($textFields as $campo)
-    <div class="mb-3">
-        <label>{{ ucwords(str_replace('_', ' ', $campo)) }}</label>
-        @if($campo === 'fecha_carnet')
-            <input type="date" name="{{ $campo }}" class="form-control" value="{{ old($campo, $individuo->$campo ?? '') }}">
-        @else
-            <input type="text" name="{{ $campo }}" class="form-control" value="{{ old($campo, $individuo->$campo ?? '') }}">
-        @endif
-    </div>
-@endforeach
+{{-- CAMPOS DE TEXTO --}}
+<div class="row">
+    @foreach($textFields as $campo)
+        <div class="col-md-4 mb-3">
+            <label for="{{ $campo }}" class="form-label">{{ ucwords(str_replace('_', ' ', $campo)) }}</label>
+            @if($campo === 'fecha_carnet')
+                <input type="date" name="{{ $campo }}" id="{{ $campo }}" class="form-control"
+                       value="{{ old($campo, $individuo->$campo ?? '') }}">
+            @else
+                <input type="text" name="{{ $campo }}" id="{{ $campo }}" class="form-control"
+                       value="{{ old($campo, $individuo->$campo ?? '') }}">
+            @endif
+        </div>
+    @endforeach
+</div>
 
-{{-- Campos tipo archivo --}}
-@foreach($fileFields as $campo)
-    <div class="mb-3">
-        <label>{{ ucwords(str_replace('_', ' ', $campo)) }} (PDF o imagen)</label>
-        <input type="file" name="{{ $campo }}" class="form-control">
-        @if(isset($individuo) && $individuo->$campo)
-            <small class="text-muted">Archivo actual: 
-                <a href="{{ asset('storage/' . $individuo->$campo) }}" target="_blank">Ver archivo</a>
-            </small>
-        @endif
-    </div>
-@endforeach
+{{-- CAMPOS DE ARCHIVOS --}}
+<hr>
+<h5 class="mb-3">Documentos</h5>
+<div class="row">
+    @foreach($fileFields as $campo)
+        <div class="col-md-4 mb-3">
+            <label for="{{ $campo }}" class="form-label">{{ ucwords(str_replace('_', ' ', $campo)) }}</label>
+            <input type="file" name="{{ $campo }}" id="{{ $campo }}" class="form-control">
+        </div>
+    @endforeach
+</div>

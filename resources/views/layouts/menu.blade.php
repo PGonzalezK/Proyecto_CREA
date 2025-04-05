@@ -11,4 +11,10 @@
     <a class="nav-link" href="/blogs">
         <i class=" fas fa-blog"></i><span>Blogs</span>
     </a>
+    <a class="nav-link" href="/individuos">
+        <i class=" fas fa-blog"></i><span>individuos</span>
+    </a>
+    <a class="nav-link" href="/blogs">
+        <i class=" fas fa-blog"></i><span>grupales</span>
+    </a>
 </li>

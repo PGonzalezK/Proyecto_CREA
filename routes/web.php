@@ -1,25 +1,41 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\PersonaController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\GruposController;
+//agregamos los siguientes controladores
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RolController;
+use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\IndividuoController;
+/*
+|--------------------------------------------------------------------------
+| Web Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register web routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| contains the "web" middleware group. Now create something great!
+|
+*/
 
-// Rutas Login
-Route::get('/', [AuthController::class, 'showLogin'])->name('auth.login');
-Route::post('/', [AuthController::class, 'login'])->name('auth.login.process');
-Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
-
-// Rutas protegidas
-Route::middleware(['auth'])->group(function () {
-    Route::get('/inicio', [DashboardController::class, 'index'])->name('inicio');
-
-    Route::resource('seccion/personas', PersonaController::class);
-    Route::resource('seccion/grupos', GruposController::class);
-
-    Route::get('/perfil', [UserController::class, 'show'])->name('perfil.show');
-    Route::put('/perfil', [UserController::class, 'update'])->name('perfil.update');
+Route::get('/', function () {
+    return view('welcome');
 });
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+//y creamos un grupo de rutas protegidas para los controladores
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RolController::class);
+    Route::resource('usuarios', UsuarioController::class);
+    Route::resource('blogs', BlogController::class);
+    Route::get('/individuos/grupales', [\App\Http\Controllers\IndividuoGrupalController::class, 'index'])->name('individuos.grupales');
+    Route::resource('individuos', IndividuoController::class);
+
+});

@@ -138,4 +138,34 @@ class UsuarioController extends Controller
         User::find($id)->delete();
         return redirect()->route('usuarios.index');
     }
+
+    public function updateProfile(Request $request)
+    {
+        $user = auth()->user();
+    
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+        ]);
+    
+        // Solo el admin puede cambiar el logo
+        if ($request->hasFile('logo')) {
+            if (!$user->hasRole('admin')) {
+                abort(403, 'No autorizado para cambiar el logo.');
+            }
+    
+            $logo = $request->file('logo');
+            $logoName = 'logo.png'; // Sobrescribe el archivo existente
+            $logo->move(public_path('img'), $logoName);
+        }
+    
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+        ]);
+    
+        return redirect('/home')->with('success', 'Perfil actualizado correctamente');
+    }
+    
+
 }

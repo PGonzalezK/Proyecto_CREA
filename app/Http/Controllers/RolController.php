@@ -6,29 +6,24 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\DB;
+use App\Models\User;
 
 class RolController extends Controller
 {
     public function __construct()
     {
         $this->middleware('permission:ver-rol|crear-rol|editar-rol|borrar-rol', ['only' => ['index']]);
-        $this->middleware('permission:crear-rol', ['only' => ['create','store']]);
-        $this->middleware('permission:editar-rol', ['only' => ['edit','update']]);
+        $this->middleware('permission:crear-rol', ['only' => ['create', 'store']]);
+        $this->middleware('permission:editar-rol', ['only' => ['edit', 'update']]);
         $this->middleware('permission:borrar-rol', ['only' => ['destroy']]);
     }
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index(Request $request)
     {
         $roles = Role::paginate(5);
         return view('roles.index', compact('roles'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         $permission = Permission::get()->groupBy(function ($item) {
@@ -38,9 +33,6 @@ class RolController extends Controller
         return view('roles.crear', compact('permission'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         $this->validate($request, [
@@ -54,17 +46,11 @@ class RolController extends Controller
         return redirect()->route('roles.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit($id)
     {
         $role = Role::find($id);
@@ -81,28 +67,30 @@ class RolController extends Controller
         return view('roles.editar', compact('role', 'permission', 'rolePermissions'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'permission' => 'required',
+        /** @var \App\Models\User $user */
+        $user = auth()->user();
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
         ]);
 
-        $role = Role::find($id);
-        $role->name = $request->input('name');
-        $role->save();
+        // Solo permitir subir logo si el usuario tiene el rol 'admin'
+        if ($request->hasFile('logo') && $user->hasRole('admin')) {
+            $logo = $request->file('logo');
+            $logo->move(public_path('img'), 'logo.png');
+        }
 
-        $role->syncPermissions($request->input('permission'));
+        $user->update([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+        ]);
 
-        return redirect()->route('roles.index');
+        return response()->json(['success' => true, 'message' => 'Perfil actualizado correctamente']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy($id)
     {
         DB::table("roles")->where('id', $id)->delete();

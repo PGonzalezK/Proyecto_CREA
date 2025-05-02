@@ -9,16 +9,41 @@ use Illuminate\Support\Facades\File;
 
 class IndividuoTecnicaController extends Controller
 {
-    public function index()
-    {
-        // Obtener todos los grupos con código_serviu válido
-        $tecnicos = Individuo::whereNotNull('codigo_serviu')
-            ->where('codigo_serviu', '!=', '')
-            ->get()
-            ->groupBy('codigo_serviu');
+    public function index(Request $request)
+{
+    $search = $request->input('search');
 
-        return view('individuos.tecnica.index', compact('tecnicos'));
+    // Filtrar individuos por código_serviu si hay búsqueda
+    $query = Individuo::whereNotNull('codigo_serviu')
+        ->where('codigo_serviu', '!=', '');
+
+    if ($search) {
+        $query->where('codigo_serviu', 'like', "%{$search}%");
     }
+
+    // Obtener los individuos y agrupar por código_serviu
+    $individuos = $query->orderBy('codigo_serviu')->get()->groupBy('codigo_serviu');
+
+    // Paginación manual sobre los grupos
+    $perPage = 15;
+    $page = $request->input('page', 1);
+    $total = $individuos->count();
+
+    $items = $individuos->slice(($page - 1) * $perPage, $perPage)->all();
+    $paginados = new \Illuminate\Pagination\LengthAwarePaginator(
+        $items,
+        $total,
+        $perPage,
+        $page,
+        ['path' => $request->url(), 'query' => $request->query()]
+    );
+
+    return view('individuos.tecnica.index', [
+        'paginados' => $paginados,
+        'search' => $search
+    ]);
+}
+
 
     public function show($codigo_serviu)
     {

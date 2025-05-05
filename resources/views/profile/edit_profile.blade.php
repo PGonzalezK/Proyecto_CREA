@@ -8,7 +8,7 @@ $user = \Illuminate\Support\Facades\Auth::user();
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Edit Profile</h5>
+                <h5 class="modal-title">Editar Perfil</h5>
                 <button type="button" aria-label="Close" class="close outline-none" data-dismiss="modal">×</button>
             </div>
             <form method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data">
@@ -19,7 +19,7 @@ $user = \Illuminate\Support\Facades\Auth::user();
                     {{csrf_field()}}
                     <div class="row">
                         <div class="form-group col-sm-6">
-                            <label>Name:</label><span class="required">*</span>
+                            <label>Nombre:</label><span class="required">*</span>
                             <input type="text" name="name" id="pfName" class="form-control" required autofocus tabindex="1">
                         </div>
                         @if($user->hasRole('admin'))
@@ -47,9 +47,9 @@ $user = \Illuminate\Support\Facades\Auth::user();
                         </div>
                     </div>
                     <div class="text-right">
-                        <button type="submit" class="btn btn-primary" id="btnPrEditSave" data-loading-text="<span class='spinner-border spinner-border-sm'></span> Processing..." tabindex="5">Save</button>
+                        <button type="submit" class="btn btn-primary" id="btnPrEditSave" data-loading-text="<span class='spinner-border spinner-border-sm'></span> Processing..." tabindex="5">Guardar</button>
                         <button type="button" class="btn btn-light ml-1 edit-cancel-margin margin-left-5"
-                            data-dismiss="modal">Cancel
+                            data-dismiss="modal">Cancelar
                         </button>
                     </div>
                 </div>

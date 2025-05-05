@@ -2290,7 +2290,7 @@ h6 .badge {
 
 .navbar .nav-link.nav-link-user img {
     object-fit: cover;
-    width: 30px;
+    width: 100px;
 }
 
 .navbar .nav-link.nav-link-img {

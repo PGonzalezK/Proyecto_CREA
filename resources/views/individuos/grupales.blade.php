@@ -19,27 +19,69 @@
                         @else
                         @foreach($grupales as $codigo => $individuos)
                         <details class="mb-4 border rounded p-3">
+                            <summary style="cursor:pointer; font-weight:bold; font-size: 1.1rem;">
+                                Código SERVIU: {{ $codigo }} ({{ count($individuos) }} individuos)
+                            </summary>
+
                             <form action="{{ route('serviu.upload', $codigo) }}" method="POST" enctype="multipart/form-data" class="mb-3">
                                 @csrf
                                 <div class="row align-items-end">
                                     <div class="col-md-4">
                                         <label for="carta_{{ $codigo }}">Carta de Compromiso:</label>
                                         <input type="file" name="carta_compromiso" id="carta_{{ $codigo }}" class="form-control">
+                                        @php
+                                        $rutaCarta = 'Antecedentes Grupales/' . $codigo . '/Carta_de_Compromiso.pdf';
+                                        @endphp
+
+                                        @if (Storage::disk('public')->exists($rutaCarta))
+                                        <a href="{{ asset('storage/' . $rutaCarta) }}" target="_blank" class="btn btn-sm btn-outline-primary mt-2">Ver Carta</a>
+                                        @endif
                                     </div>
+
                                     <div class="col-md-4">
                                         <label for="contrato_{{ $codigo }}">Contrato de Construcción:</label>
                                         <input type="file" name="contrato_construccion" id="contrato_{{ $codigo }}" class="form-control">
+                                        @php
+                                        $rutaContrato = 'Antecedentes Grupales/' . $codigo . '/Contrato_de_Construccion.pdf';
+                                        @endphp
+
+                                        @if (Storage::disk('public')->exists($rutaContrato))
+                                        <a href="{{ asset('storage/' . $rutaContrato) }}" target="_blank" class="btn btn-sm btn-outline-success mt-2">Ver Contrato</a>
+                                        @endif
                                     </div>
+
                                     <div class="col-md-4">
                                         <button type="submit" class="btn btn-primary mt-4">Subir Documentos</button>
                                     </div>
                                 </div>
                             </form>
 
-                            <summary style="cursor:pointer; font-weight:bold; font-size: 1.1rem;">
-                                Código SERVIU: {{ $codigo }} ({{ count($individuos) }} individuos)
-                            </summary>
+                            {{-- FORMULARIOS DE ELIMINACIÓN FUERA DEL FORMULARIO PRINCIPAL --}}
+                            <div class="row mt-2">
+                                <div class="col-md-4">
+                                    @if (Storage::disk('public')->exists($rutaCarta))
+                                    <form action="{{ route('serviu.eliminar', ['codigo' => $codigo, 'tipo' => 'Carta_de_Compromiso']) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Seguro que deseas eliminar la carta?')">
+                                            Eliminar Carta
+                                        </button>
+                                    </form>
+                                    @endif
+                                </div>
 
+                                <div class="col-md-4">
+                                    @if (Storage::disk('public')->exists($rutaContrato))
+                                    <form action="{{ route('serviu.eliminar', ['codigo' => $codigo, 'tipo' => 'Contrato_de_Construccion']) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Seguro que deseas eliminar el contrato?')">
+                                            Eliminar Contrato
+                                        </button>
+                                    </form>
+                                    @endif
+                                </div>
+                            </div>
                             <table class="table table-striped mt-3">
                                 <thead style="background-color:#6777ef">
                                     <tr>

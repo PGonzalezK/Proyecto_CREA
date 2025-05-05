@@ -8,6 +8,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\IndividuoController;
 use App\Http\Controllers\IndividuoTecnicaControllerController;
+use App\Http\Controllers\ServiuController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +39,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('blogs', BlogController::class);
     Route::get('/individuos/grupales', [\App\Http\Controllers\IndividuoGrupalController::class, 'index'])->name('individuos.grupales');
     Route::post('/serviu/{codigo}/upload', [App\Http\Controllers\ServiuController::class, 'upload'])->name('serviu.upload');
+    Route::delete('/serviu/{codigo}/{tipo}/eliminar', [App\Http\Controllers\ServiuController::class, 'eliminarArchivo'])->name('serviu.eliminar');
     Route::get('/tecnica', [App\Http\Controllers\IndividuoTecnicaController::class, 'index'])->name('tecnica.index');
     Route::get('/tecnica/{codigo_serviu}', [App\Http\Controllers\IndividuoTecnicaController::class, 'show'])->name('tecnica.show');
     Route::post('/tecnica/{codigo_serviu}/crear-carpeta', [App\Http\Controllers\IndividuoTecnicaController::class, 'crearCarpeta'])->name('tecnica.crearCarpeta');

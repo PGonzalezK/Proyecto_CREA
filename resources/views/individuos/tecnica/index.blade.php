@@ -13,7 +13,7 @@
                         <h5 class="mb-0">Listado de Códigos SERVIU</h5>
                         <form method="GET" action="{{ route('tecnica.index') }}" class="d-flex">
                             <input type="text" name="search" value="{{ request('search') }}" class="form-control form-control-sm me-2" placeholder="Buscar código...">
-                            <button class="btn btn-light btn-sm" type="submit">Buscar</button>
+                            <button class="btn btn-secondary " type="submit">Buscar</button>
                         </form>
                     </div>
                     <div class="card-body">
@@ -24,7 +24,7 @@
                                 @foreach($paginados as $codigo => $grupo)
                                     <a href="{{ route('tecnica.show', $codigo) }}" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
                                         <span><strong>Código:</strong> {{ $codigo }}</span>
-                                        <span class="badge bg-primary rounded-pill">{{ $grupo->count() }} individuos</span>
+                                        <span class="badge bg-info text-dark rounded-pill">{{ $grupo->count() }} individuos</span>
                                     </a>
                                 @endforeach
                             </div>

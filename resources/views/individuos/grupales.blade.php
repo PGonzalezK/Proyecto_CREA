@@ -27,10 +27,10 @@
                                 @csrf
                                 <div class="row align-items-end">
                                     <div class="col-md-4">
-                                        <label for="carta_{{ $codigo }}">Carta de Compromiso:</label>
+                                        <label for="carta_{{ $codigo }}">Boleta de garantia:</label>
                                         <input type="file" name="carta_compromiso" id="carta_{{ $codigo }}" class="form-control">
                                         @php
-                                        $rutaCarta = 'Antecedentes Grupales/' . $codigo . '/Carta_de_Compromiso.pdf';
+                                        $rutaCarta = 'Antecedentes Grupales/' . $codigo . '/Boleta_de_garantia.pdf';
                                         @endphp
 
                                         @if (Storage::disk('public')->exists($rutaCarta))
@@ -39,10 +39,10 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                        <label for="contrato_{{ $codigo }}">Contrato de Construcción:</label>
+                                        <label for="contrato_{{ $codigo }}">Boleta 2:</label>
                                         <input type="file" name="contrato_construccion" id="contrato_{{ $codigo }}" class="form-control">
                                         @php
-                                        $rutaContrato = 'Antecedentes Grupales/' . $codigo . '/Contrato_de_Construccion.pdf';
+                                        $rutaContrato = 'Antecedentes Grupales/' . $codigo . '/Boleta_2.pdf';
                                         @endphp
 
                                         @if (Storage::disk('public')->exists($rutaContrato))

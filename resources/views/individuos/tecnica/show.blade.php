@@ -109,7 +109,7 @@
         </div>
 
         <div class="mt-4">
-            <a href="{{ route('tecnica.index') }}" class="btn btn-secondary">← Volver</a>
+            <a href="{{ route('tecnica.index') }}" class="btn btn-warning btn-lg">← Volver</a>
         </div>
     </div>
 </section>

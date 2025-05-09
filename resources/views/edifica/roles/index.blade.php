@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('edifica/layouts.app')
 
-@section('content')
+@section('edifica/content')
     <section class="section">
         <div class="section-header">
             <h3 class="page__heading">Roles</h3>
@@ -12,7 +12,7 @@
                         <div class="card-body">
         
                         @can('crear-rol')
-                        <a class="btn btn-success" href="{{ route('roles.create') }}">Nuevo</a>                        
+                        <a class="btn btn-success" href="{{ route('edifica.roles.create') }}">Nuevo</a>                        
                         @endcan
         
                 
@@ -27,11 +27,11 @@
                                     <td>{{ $role->name }}</td>
                                     <td>                                
                                         @can('editar-rol')
-                                            <a class="btn btn-warning" href="{{ route('roles.edit',$role->id) }}">Editar</a>
+                                            <a class="btn btn-warning" href="{{ route('edifica.roles.edit',$role->id) }}">Editar</a>
                                         @endcan
                                         
                                         @can('borrar-rol')
-                                            {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
+                                            {!! Form::open(['method' => 'DELETE','route' => ['edifica.roles.destroy', $role->id],'style'=>'display:inline']) !!}
                                                 {!! Form::submit('Borrar', ['class' => 'btn btn-danger']) !!}
                                             {!! Form::close() !!}
                                         @endcan

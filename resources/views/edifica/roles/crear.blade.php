@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('edifica/layouts.app')
 
-@section('content')
+@section('edifica/content')
 <section class="section">
     <div class="section-header text-center">
         <h2 class="page__heading">Crear Rol</h2>
@@ -23,7 +23,7 @@
                             </div>
                         @endif
 
-                        {!! Form::open(['route' => 'roles.store', 'method' => 'POST']) !!}
+                        {!! Form::open(['route' => 'edifica.roles.store', 'method' => 'POST']) !!}
                         
                         <div class="form-group">
                             <label for="name" class="display-4 font-weight-bold">Nombre del Rol:</label>
@@ -66,7 +66,7 @@
                         </div>
 
                         <div class="mt-4 text-right">
-                            <a href="{{ route('roles.index') }}" class="btn btn-secondary btn-sm mr-2">Cancelar</a>
+                            <a href="{{ route('edifica.roles.index') }}" class="btn btn-secondary btn-sm mr-2">Cancelar</a>
                             <button type="submit" class="btn btn-primary btn-sm">Guardar</button>
                         </div>
                         {!! Form::close() !!}

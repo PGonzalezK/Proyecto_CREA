@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('edifica/layouts.app')
 
-@section('content')
+@section('edifica/content')
 <section class="section">
     <div class="section-header">
         <h3 class="page__heading">Crear Individuo</h3>
@@ -24,14 +24,14 @@
                         @endif
 
                         {{-- Formulario --}}
-                        <form action="{{ route('individuos.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('edifica.individuos.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             {{-- Incluye los campos del formulario --}}
-                            @include('individuos.form')
+                            @include('edifica.individuos.form')
 
                             <div class="mt-4 d-flex justify-content-end">
-                                <a class="btn btn-secondary me-2" href="{{ route('individuos.index') }}">Volver</a>
+                                <a class="btn btn-secondary me-2" href="{{ route('edifica.individuos.index') }}">Volver</a>
                                 <button type="submit" class="btn btn-primary">Guardar</button>
                             </div>
                         </form>

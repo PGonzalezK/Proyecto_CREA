@@ -20,14 +20,14 @@ class UsuarioController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     private function viewWithPortal($path, $data = [])
-{
-    $portal = session('portal', 'crea'); // default a 'crea'
-    return view("$portal.$path", $data);
-}
+    private function viewWithPortal($path, $data = [])
+    {
+        $portal = session('portal', 'crea'); // default a 'crea'
+        return view("$portal.$path", $data);
+    }
 
     public function index(Request $request)
-    {      
+    {
         //Sin paginación
         /* $usuarios = User::all();
         return view('usuarios.index',compact('usuarios')); */
@@ -47,7 +47,7 @@ class UsuarioController extends Controller
     public function create()
     {
         //aqui trabajamos con name de las tablas de users
-        $roles = Role::pluck('name','name')->all();
+        $roles = Role::pluck('name', 'name')->all();
         return $this->viewWithPortal('usuarios.crear', compact('roles'));
     }
 
@@ -66,14 +66,15 @@ class UsuarioController extends Controller
             'password' => 'required|same:confirm-password',
             'roles' => 'required'
         ]);
-    
+
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-    
+
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
-    
-        return redirect()->route('crea.usuarios.index');
+
+        $portal = session('portal', 'crea');
+        return redirect()->route("$portal.usuarios.index")->with('success', 'Usuario actualizado correctamente.');
     }
 
     /**
@@ -96,13 +97,12 @@ class UsuarioController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
-    
-        return $this->viewWithPortal('usuarios.editar', compact('user', 'roles', 'userRole'));
+        $roles = Role::pluck('name', 'name')->all();
+        $userRole = $user->roles->pluck('name', 'name')->all();
 
+        return $this->viewWithPortal('usuarios.editar', compact('user', 'roles', 'userRole'));
     }
-        
+
 
     /**
      * Update the specified resource in storage.
@@ -111,33 +111,35 @@ class UsuarioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'same:confirm-password',
-            'roles' => 'required',
-            'id_empresa' => 'required|in:0,1,2'
-        ]);
-    
-        $input = $request->only(['name', 'email', 'password', 'id_empresa']);
-    
-        if (!empty($input['password'])) {
-            $input['password'] = Hash::make($input['password']);
-        } else {
-            $input = Arr::except($input, ['password']);
-        }
-    
-        $user = User::find($id);
-        $user->update($input);
-    
-        DB::table('model_has_roles')->where('model_id', $id)->delete();
-        $user->assignRole($request->input('roles'));
-    
-        return redirect()->route('crea.usuarios.index');
+public function update(Request $request, $id)
+{
+    $this->validate($request, [
+        'name' => 'required',
+        'email' => 'required|email|unique:users,email,'.$id,
+        'password' => 'same:confirm-password',
+        'roles' => 'required',
+        'id_empresa' => 'required|in:0,1,2'
+    ]);
+
+    $input = $request->only(['name', 'email', 'password', 'id_empresa']);
+
+    if (!empty($input['password'])) {
+        $input['password'] = Hash::make($input['password']);
+    } else {
+        $input = Arr::except($input, ['password']);
     }
-    
+
+    $user = User::find($id);
+    $user->update($input);
+
+    DB::table('model_has_roles')->where('model_id', $id)->delete();
+    $user->assignRole($request->input('roles'));
+
+    $portal = session('portal', 'crea');
+    return redirect()->route("$portal.usuarios.index")->with('success', 'Usuario actualizado correctamente.');
+}
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -148,36 +150,35 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('crea.usuarios.index');
+        $portal = session('portal', 'crea');
+        return redirect()->route("$portal.usuarios.index")->with('success', 'Usuario actualizado correctamente.');
     }
 
     public function updateProfile(Request $request)
     {
         $user = auth()->user();
-    
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
         ]);
-    
+
         // Solo el admin puede cambiar el logo
         if ($request->hasFile('logo')) {
             if (!$user->hasRole('admin')) {
                 abort(403, 'No autorizado para cambiar el logo.');
             }
-    
+
             $logo = $request->file('logo');
             $logoName = 'logo.png'; // Sobrescribe el archivo existente
             $logo->move(public_path('img'), $logoName);
         }
-    
+
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
         ]);
-    
+
         return redirect('/home')->with('success', 'Perfil actualizado correctamente');
     }
-    
-
 }

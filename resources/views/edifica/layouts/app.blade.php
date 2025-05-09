@@ -35,7 +35,8 @@
 
         </nav>
         <div class="main-sidebar main-sidebar-postion">
-            @include('edifica/layouts.sidebar')
+            @include('components.menu')
+
         </div>
         <!-- Main Content -->
         <div class="main-content">

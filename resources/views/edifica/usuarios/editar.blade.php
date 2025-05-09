@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('edifica/layouts.app')
 
-@section('content')
+@section('edifica/content')
 <section class="section">
     <div class="section-header">
         <h3 class="page__heading">Editar Usuario</h3>
@@ -23,7 +23,7 @@
                         </div>
                         @endif
 
-                        {!! Form::model($user, ['method' => 'PATCH','route' => ['usuarios.update', $user->id]]) !!}
+                        {!! Form::model($user, ['method' => 'PATCH','route' => ['edifica.usuarios.update', $user->id]]) !!}
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">

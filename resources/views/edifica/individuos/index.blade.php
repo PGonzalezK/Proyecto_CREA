@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('edifica/layouts.app')
 
-@section('content')
+@section('edifica/content')
 <section class="section">
     <div class="section-header">
         <h3 class="page__heading">Individuos</h3>
@@ -12,7 +12,7 @@
                     <div class="card-body">
 
                         @can('crear-individuo')
-                        <a class="btn btn-success mb-3" href="{{ route('individuos.create') }}">Nuevo</a>
+                        <a class="btn btn-success mb-3" href="{{ route('edifica.individuos.create') }}">Nuevo</a>
                         @endcan
 
                         <table class="table table-striped mt-2">
@@ -31,14 +31,14 @@
                                     <td>{{ $individuo->apellido }}</td>
                                     <td>{{ $individuo->rut }}</td>
                                     <td>
-                                        <form action="{{ route('individuos.destroy',$individuo->id) }}" method="POST">
+                                        <form action="{{ route('edifica.individuos.destroy',$individuo->id) }}" method="POST">
                                             
                                             @can('ver-individuo')
-                                            <a class="btn btn-primary btn-sm" href="{{ route('individuos.show', $individuo->id) }}">Ver</a>
+                                            <a class="btn btn-primary btn-sm" href="{{ route('edifica.individuos.show', $individuo->id) }}">Ver</a>
                                             @endcan
 
                                             @can('editar-individuo')
-                                            <a class="btn btn-warning btn-sm" href="{{ route('individuos.edit',$individuo->id) }}">Editar</a>
+                                            <a class="btn btn-warning btn-sm" href="{{ route('edifica.individuos.edit',$individuo->id) }}">Editar</a>
                                             @endcan
 
                                             @csrf

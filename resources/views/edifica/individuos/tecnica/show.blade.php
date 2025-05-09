@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('edifica/layouts.app')
 
-@section('content')
+@section('edifica/content')
 <section class="section">
     <div class="section-header">
         <h3 class="page__heading">Área Técnica - Código SERVIU: {{ $codigo_serviu }}</h3>
@@ -41,7 +41,7 @@
 
                         // Formulario subir archivos
                         echo "
-                        <form action='" . route('tecnica.upload', $codigo_serviu) . "' method='POST' enctype='multipart/form-data' class='mt-2 mb-2'>
+                        <form action='" . route('edifica.tecnica.upload', $codigo_serviu) . "' method='POST' enctype='multipart/form-data' class='mt-2 mb-2'>
                                     " . csrf_field() . "
                                     <input type='hidden' name='carpeta' value='$relativa'>
                                     <div class='input-group'>
@@ -53,7 +53,7 @@
 
                             // Formulario crear subcarpeta
                             echo "
-                                <form action='" . route('tecnica.crearCarpeta', $codigo_serviu) . "' method='POST' class='mb-3'>
+                                <form action='" . route('edifica.tecnica.crearCarpeta', $codigo_serviu) . "' method='POST' class='mb-3'>
                                     " . csrf_field() . "
                                     <input type='hidden' name='carpeta_padre' value='$relativa'>
                                     <div class='input-group'>
@@ -66,7 +66,7 @@
                             // Botón eliminar carpeta
                             if ($relativa !=='' ) { // para evitar que se elimine la raíz
                             echo "
-        <form action='" . route('tecnica.eliminarCarpeta', $codigo_serviu) . "' method='POST' onsubmit='return confirm(\" ¿Estás seguro que deseas eliminar esta carpeta y todo su contenido?\")' class='mb-3'>
+        <form action='" . route('edifica.tecnica.eliminarCarpeta', $codigo_serviu) . "' method='POST' onsubmit='return confirm(\" ¿Estás seguro que deseas eliminar esta carpeta y todo su contenido?\")' class='mb-3'>
                             " . csrf_field() . method_field('DELETE') . "
                             <input type='hidden' name='carpeta' value='$relativa'>
                             <button type='submit' class='btn btn-sm btn-danger'>Eliminar carpeta</button>
@@ -109,7 +109,7 @@
         </div>
 
         <div class="mt-4">
-            <a href="{{ route('tecnica.index') }}" class="btn btn-secondary">← Volver</a>
+            <a href="{{ route('edifica.tecnica.index') }}" class="btn btn-secondary">← Volver</a>
         </div>
     </div>
 </section>

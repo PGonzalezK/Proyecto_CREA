@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('edifica/layouts.app')
 
-@section('content')
+@section('edifica/content')
 <section class="section">
     <div class="section-header">
         <h3 class="page__heading">Detalle de Individuo</h3>
@@ -17,7 +17,7 @@
                         <p><strong>Fecha Carnet:</strong> {{ $individuo->fecha_carnet }}</p>
                         {{-- Agrega aquí más campos si deseas mostrarlos en detalle --}}
 
-                        <a class="btn btn-secondary mt-3" href="{{ route('individuos.index') }}">Volver</a>
+                        <a class="btn btn-secondary mt-3" href="{{ route('edifica.individuos.index') }}">Volver</a>
 
                     </div>
                 </div>

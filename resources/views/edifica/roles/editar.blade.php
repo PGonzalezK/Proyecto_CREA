@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('edifica/layouts.app')
 
-@section('content')
+@section('edifica/content')
 <section class="section">
     <div class="section-header">
         <h3 class="page__heading">Editar Rol</h3>
@@ -23,7 +23,7 @@
                         </div>
                         @endif
 
-                        {!! Form::model($role, ['method' => 'PATCH','route' => ['roles.update', $role->id]]) !!}
+                        {!! Form::model($role, ['method' => 'PATCH','route' => ['edifica.roles.update', $role->id]]) !!}
 
                         <div class="form-group">
                             <label for="name">Nombre del Rol:</label>

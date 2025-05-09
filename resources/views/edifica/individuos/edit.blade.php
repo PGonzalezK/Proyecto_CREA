@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('edifica/layouts.app')
 
-@section('content')
+@section('edifica/content')
 <section class="section">
     <div class="section-header">
         <h3 class="page__heading">Editar Individuo</h3>
@@ -22,12 +22,12 @@
                             </div>
                         @endif
 
-                        <form action="{{ route('individuos.update', $individuo->id) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('edifica.individuos.update', $individuo->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            @include('individuos.form', ['individuo' => $individuo])
+                            @include('edifica.individuos.form', ['individuo' => $individuo])
                             <button type="submit" class="btn btn-success mt-3">Actualizar</button>
-                            <a class="btn btn-secondary mt-3" href="{{ route('individuos.index') }}">Volver</a>
+                            <a class="btn btn-secondary mt-3" href="{{ route('edifica.individuos.index') }}">Volver</a>
                         </form>
 
                     </div>

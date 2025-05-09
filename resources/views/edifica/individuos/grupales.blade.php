@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('edifca/layouts.app')
 
-@section('content')
+@section('edifica/content')
 <section class="section">
     <div class="section-header">
         <h3 class="page__heading">Individuos Agrupados por Código SERVIU</h3>

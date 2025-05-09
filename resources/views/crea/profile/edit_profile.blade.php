@@ -32,8 +32,15 @@ $user = \Illuminate\Support\Facades\Auth::user();
                                 </label>
                             </div>
                             <div class="col-sm-3 preview-image-video-container float-right mt-1">
-                            <img src="{{ asset('img/logo.png') }}?v={{ filemtime(public_path('img/logo.png')) }}" width="100">
+                            @php
+                                $portal = session('portal', 'crea');
+                                $logoPath = "img/logo-$portal.png";
+                                if (!file_exists(public_path($logoPath))) {
+                                    $logoPath = "img/logo.png"; // fallback
+                                }
+                            @endphp
 
+                            <img src="{{ asset($logoPath) }}?v={{ filemtime(public_path($logoPath)) }}" width="100">
 
                             </div>
                         </div>

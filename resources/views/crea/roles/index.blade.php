@@ -10,21 +10,26 @@
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-body">
-        
+
                         @can('crear-rol')
                         <a class="btn btn-success" href="{{ route('crea.roles.create') }}">Nuevo</a>                        
                         @endcan
-        
-                
+
                             <table class="table table-striped mt-2">
                                 <thead style="background-color:#6777ef">                                                       
                                     <th style="color:#fff;">Rol</th>
+                                    <th style="color:#fff;">Permisos</th>
                                     <th style="color:#fff;">Acciones</th>
                                 </thead>  
                                 <tbody>
                                 @foreach ($roles as $role)
                                 <tr>                           
                                     <td>{{ $role->name }}</td>
+                                    <td>
+                                        @foreach ($role->permissions as $permiso)
+                                            <span class="badge badge-info">{{ $permiso->name }}</span>
+                                        @endforeach
+                                    </td>
                                     <td>                                
                                         @can('editar-rol')
                                             <a class="btn btn-warning" href="{{ route('crea.roles.edit',$role->id) }}">Editar</a>
@@ -45,10 +50,10 @@
                             <div class="pagination justify-content-end">
                                 {!! $roles->links() !!} 
                             </div>                    
-                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 @endsection

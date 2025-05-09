@@ -9,9 +9,14 @@
         <li class="dropdown">
             <a href="#" data-toggle="dropdown"
                class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="{{ asset('img/logo.png') }}"
-                     class="rounded-circle mr-1 thumbnail-rounded user-thumbnail ">
-                <div class="d-sm-none d-lg-inline-block">
+                        @php
+                        $portal = session('portal', 'crea');
+                        $logoPath = "img/logo-$portal.png";
+                        @endphp
+
+                    <img alt="logo" src="{{ asset($logoPath) }}?v={{ file_exists(public_path($logoPath)) ? filemtime(public_path($logoPath)) : time() }}"
+                        class="rounded-circle mr-1 thumbnail-rounded user-thumbnail">
+                    <div class="d-sm-none d-lg-inline-block">
                     ¡Hola, {{\Illuminate\Support\Facades\Auth::user()->name}}!</div>
             </a>
 

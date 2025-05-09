@@ -26,15 +26,18 @@ class RolController extends Controller
     public function index(Request $request)
     {
         $portal = $this->getPortal();
-        $roles = Role::paginate(20);
+        $roles = Role::with('permissions')->paginate(20);
         return view("$portal.roles.index", compact('roles'));
     }
 
     public function create()
     {
         $portal = $this->getPortal();
+
+        // Agrupar por última palabra del permiso (ej. 'tecnica' en 'ver-area-tecnica')
         $permission = Permission::get()->groupBy(function ($item) {
-            return explode('-', $item->name)[1] ?? 'otros';
+            $partes = explode('-', $item->name);
+            return end($partes) ?: 'otros';
         });
 
         return view("$portal.roles.crear", compact('permission'));
@@ -66,8 +69,10 @@ class RolController extends Controller
 
         $role = Role::findOrFail($id);
 
+        // Agrupar permisos igual que en create()
         $permission = Permission::get()->groupBy(function ($item) {
-            return explode('-', $item->name)[1] ?? 'otros';
+            $partes = explode('-', $item->name);
+            return end($partes) ?: 'otros';
         });
 
         $rolePermissions = DB::table("role_has_permissions")

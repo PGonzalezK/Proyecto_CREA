@@ -41,15 +41,17 @@
                             </div>                                                                
                             
                             <div class="col-md-4 col-xl-4">
-                                <div class="card bg-c-pink order-card">
+                                <div class="card bg-primary text-white order-card">
                                     <div class="card-block">
-                                        <h5>Blogs</h5>                                               
+                                        <h5>Individuos CREA</h5>
                                         @php
-                                            use App\Models\Blog;
-                                            $cant_blogs = Blog::count();                                                
+                                            use App\Models\Individuo;
+                                            $cant_individuos_crea = Individuo::where('id_empresa', 1)->count();
                                         @endphp
-                                        <h2 class="text-right"><i class="fa fa-blog f-left"></i><span>{{$cant_blogs}}</span></h2>
-                                        <p class="m-b-0 text-right"><a href="/blogs" class="text-white">Ver más</a></p>
+                                        <h2 class="text-right"><i class="fa fa-user f-left"></i><span>{{ $cant_individuos_crea }}</span></h2>
+                                        <p class="m-b-0 text-right">
+                                            <a href="/crea/individuos" class="text-white">Ver más</a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>

@@ -32,7 +32,6 @@ Route::prefix('crea')->name('crea.')->middleware(['auth', 'portal.access'])->gro
 
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
-    Route::resource('blogs', BlogController::class);
     Route::resource('individuos', IndividuoController::class);
 
     Route::get('/tecnica', [IndividuoTecnicaController::class, 'index'])->name('tecnica.index');
@@ -58,7 +57,6 @@ Route::prefix('edifica')->name('edifica.')->middleware(['auth', 'portal.access']
 
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
-    Route::resource('blogs', BlogController::class);
     Route::resource('individuos', IndividuoController::class);
 
     Route::get('/tecnica', [IndividuoTecnicaController::class, 'index'])->name('tecnica.index');

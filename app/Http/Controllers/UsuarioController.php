@@ -169,8 +169,10 @@ public function update(Request $request, $id)
                 abort(403, 'No autorizado para cambiar el logo.');
             }
 
+            $portal = session('portal', 'crea'); // detectar portal actual
             $logo = $request->file('logo');
-            $logoName = 'logo.png'; // Sobrescribe el archivo existente
+            $logoName = "logo-$portal.png"; // distinto logo por portal
+
             $logo->move(public_path('img'), $logoName);
         }
 
@@ -179,6 +181,9 @@ public function update(Request $request, $id)
             'email' => $request->email,
         ]);
 
-        return redirect('/home')->with('success', 'Perfil actualizado correctamente');
+        $portal = session('portal', 'crea');
+        return redirect("/$portal/home")->with('success', 'Perfil actualizado correctamente');
     }
+
+
 }

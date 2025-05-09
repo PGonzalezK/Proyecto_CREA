@@ -1,0 +1,15 @@
+.carpeta-container {
+    margin-left: 15px;
+    border-left: 1px solid #ccc;
+    padding-left: 10px;
+}
+
+.toggle-btn {
+    cursor: pointer;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.contenido-carpeta {
+    display: none;
+}

@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 
     /**
@@ -25,6 +25,10 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //
+        //agregamos el usuario Super Admin
+        // Otorga implícitamente todos los permisos a la función "Superadministrador"       
+        Gate::before(function ($user, $ability) {
+            return $user->email == 'admin@admin.com' ? true : null;
+        });
     }
 }

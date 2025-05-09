@@ -19,22 +19,39 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      */
-    public function index()
+    public function indexCrea()
     {
-        $hoy = Carbon::today();
+        $hoy = Carbon::now();
+        $empresa = auth()->user()->id_empresa;
+        $individuosPorVencer = Individuo::whereNotNull('fecha_carnet')
+        ->whereBetween('fecha_carnet', [$hoy, $hoy->copy()->addDays(30)])
+        ->when($empresa > 0, fn($q) => $q->where('id_empresa', $empresa))
+        ->get();
+    
+    $individuosVencidos = Individuo::whereNotNull('fecha_carnet')
+        ->where('fecha_carnet', '<', $hoy)
+        ->when($empresa > 0, fn($q) => $q->where('id_empresa', $empresa))
+        ->get();
 
-        // Carnets por vencer en los próximos 30 días
+        return view('crea.home', compact('individuosPorVencer', 'individuosVencidos'));
+    }
+
+    public function indexEdifica()
+    {
+        $hoy = now();
+        $empresa = auth()->user()->id_empresa;
+    
         $individuosPorVencer = Individuo::whereNotNull('fecha_carnet')
             ->whereBetween('fecha_carnet', [$hoy, $hoy->copy()->addDays(30)])
-            ->orderBy('fecha_carnet')
+            ->when($empresa > 0, fn($q) => $q->where('id_empresa', $empresa))
             ->get();
-
-        // Carnets ya vencidos
+    
         $individuosVencidos = Individuo::whereNotNull('fecha_carnet')
             ->where('fecha_carnet', '<', $hoy)
-            ->orderBy('fecha_carnet')
+            ->when($empresa > 0, fn($q) => $q->where('id_empresa', $empresa))
             ->get();
-
-        return view('home', compact('individuosPorVencer', 'individuosVencidos'));
+    
+        return view('edifica.home', compact('individuosPorVencer', 'individuosVencidos'));
     }
+    
 }

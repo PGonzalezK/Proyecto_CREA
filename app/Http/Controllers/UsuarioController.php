@@ -19,6 +19,13 @@ class UsuarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     private function viewWithPortal($path, $data = [])
+{
+    $portal = session('portal', 'crea'); // default a 'crea'
+    return view("$portal.$path", $data);
+}
+
     public function index(Request $request)
     {      
         //Sin paginación
@@ -26,8 +33,8 @@ class UsuarioController extends Controller
         return view('usuarios.index',compact('usuarios')); */
 
         //Con paginación
-        $usuarios = User::paginate(5);
-        return view('usuarios.index',compact('usuarios'));
+        $usuarios = User::paginate(20);
+        return $this->viewWithPortal('usuarios.index', compact('usuarios'));
 
         //al usar esta paginacion, recordar poner en el el index.blade.php este codigo  {!! $usuarios->links() !!}
     }
@@ -41,7 +48,7 @@ class UsuarioController extends Controller
     {
         //aqui trabajamos con name de las tablas de users
         $roles = Role::pluck('name','name')->all();
-        return view('usuarios.crear',compact('roles'));
+        return $this->viewWithPortal('usuarios.crear', compact('roles'));
     }
 
     /**
@@ -54,6 +61,7 @@ class UsuarioController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
+            'id_empresa' => 'required|in:0,1,2',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
             'roles' => 'required'
@@ -65,7 +73,7 @@ class UsuarioController extends Controller
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
     
-        return redirect()->route('usuarios.index');
+        return redirect()->route('crea.usuarios.index');
     }
 
     /**
@@ -91,9 +99,10 @@ class UsuarioController extends Controller
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
     
-        return view('usuarios.editar',compact('user','roles','userRole'));
+        return $this->viewWithPortal('usuarios.editar', compact('user', 'roles', 'userRole'));
+
     }
-    
+        
 
     /**
      * Update the specified resource in storage.
@@ -108,24 +117,27 @@ class UsuarioController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'password' => 'same:confirm-password',
-            'roles' => 'required'
+            'roles' => 'required',
+            'id_empresa' => 'required|in:0,1,2'
         ]);
     
-        $input = $request->all();
-        if(!empty($input['password'])){ 
+        $input = $request->only(['name', 'email', 'password', 'id_empresa']);
+    
+        if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = Arr::except($input,array('password'));    
+        } else {
+            $input = Arr::except($input, ['password']);
         }
     
         $user = User::find($id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
     
+        DB::table('model_has_roles')->where('model_id', $id)->delete();
         $user->assignRole($request->input('roles'));
     
-        return redirect()->route('usuarios.index');
+        return redirect()->route('crea.usuarios.index');
     }
+    
 
     /**
      * Remove the specified resource from storage.
@@ -136,7 +148,7 @@ class UsuarioController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('usuarios.index');
+        return redirect()->route('crea.usuarios.index');
     }
 
     public function updateProfile(Request $request)

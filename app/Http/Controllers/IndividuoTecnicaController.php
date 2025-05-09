@@ -38,7 +38,7 @@ class IndividuoTecnicaController extends Controller
         ['path' => $request->url(), 'query' => $request->query()]
     );
 
-    return view('individuos.tecnica.index', [
+    return view('crea.individuos.tecnica.index', [
         'paginados' => $paginados,
         'search' => $search
     ]);
@@ -51,10 +51,10 @@ class IndividuoTecnicaController extends Controller
         $individuos = Individuo::where('codigo_serviu', $codigo_serviu)->get();
 
         if ($individuos->isEmpty()) {
-            return redirect()->route('tecnica.index')->with('error', 'No se encontraron individuos con ese código SERVIU.');
+            return redirect()->route('crea.tecnica.index')->with('error', 'No se encontraron individuos con ese código SERVIU.');
         }
 
-        return view('individuos.tecnica.show', compact('codigo_serviu', 'individuos'));
+        return view('crea.individuos.tecnica.show', compact('codigo_serviu', 'individuos'));
     }
 
     public function upload(Request $request, $codigo_serviu)

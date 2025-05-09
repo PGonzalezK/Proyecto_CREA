@@ -18,23 +18,32 @@ class RolController extends Controller
         $this->middleware('permission:borrar-rol', ['only' => ['destroy']]);
     }
 
+    private function getPortal()
+    {
+        return session('portal', 'crea');
+    }
+
     public function index(Request $request)
     {
-        $roles = Role::paginate(5);
-        return view('roles.index', compact('roles'));
+        $portal = $this->getPortal();
+        $roles = Role::paginate(20);
+        return view("$portal.roles.index", compact('roles'));
     }
 
     public function create()
     {
+        $portal = $this->getPortal();
         $permission = Permission::get()->groupBy(function ($item) {
             return explode('-', $item->name)[1] ?? 'otros';
         });
 
-        return view('roles.crear', compact('permission'));
+        return view("$portal.roles.crear", compact('permission'));
     }
 
     public function store(Request $request)
     {
+        $portal = $this->getPortal();
+
         $this->validate($request, [
             'name' => 'required|unique:roles,name',
             'permission' => 'required',
@@ -43,7 +52,7 @@ class RolController extends Controller
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
 
-        return redirect()->route('roles.index');
+        return redirect()->route("$portal.roles.index")->with('success', 'Rol creado correctamente.');
     }
 
     public function show($id)
@@ -53,7 +62,9 @@ class RolController extends Controller
 
     public function edit($id)
     {
-        $role = Role::find($id);
+        $portal = $this->getPortal();
+
+        $role = Role::findOrFail($id);
 
         $permission = Permission::get()->groupBy(function ($item) {
             return explode('-', $item->name)[1] ?? 'otros';
@@ -64,36 +75,32 @@ class RolController extends Controller
             ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
             ->all();
 
-        return view('roles.editar', compact('role', 'permission', 'rolePermissions'));
+        return view("$portal.roles.editar", compact('role', 'permission', 'rolePermissions'));
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
-        /** @var \App\Models\User $user */
-        $user = auth()->user();
+        $portal = $this->getPortal();
 
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email',
+        $this->validate($request, [
+            'name' => 'required',
+            'permission' => 'required',
         ]);
 
-        // Solo permitir subir logo si el usuario tiene el rol 'admin'
-        if ($request->hasFile('logo') && $user->hasRole('admin')) {
-            $logo = $request->file('logo');
-            $logo->move(public_path('img'), 'logo.png');
-        }
+        $role = Role::findOrFail($id);
+        $role->name = $request->input('name');
+        $role->save();
 
-        $user->update([
-            'name' => $request->input('name'),
-            'email' => $request->input('email'),
-        ]);
+        $role->syncPermissions($request->input('permission'));
 
-        return response()->json(['success' => true, 'message' => 'Perfil actualizado correctamente']);
+        return redirect()->route("$portal.roles.index")->with('success', 'Rol actualizado correctamente.');
     }
 
     public function destroy($id)
     {
+        $portal = $this->getPortal();
+
         DB::table("roles")->where('id', $id)->delete();
-        return redirect()->route('roles.index');
+        return redirect()->route("$portal.roles.index")->with('success', 'Rol eliminado correctamente.');
     }
 }

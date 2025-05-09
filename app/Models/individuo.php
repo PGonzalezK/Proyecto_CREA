@@ -12,6 +12,7 @@ class Individuo extends Model
     protected $table = 'individuos';
 
     protected $fillable = [
+        'id_empresa',
         'nombre',
         'apellido',
         'rut',

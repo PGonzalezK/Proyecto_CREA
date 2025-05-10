@@ -9,26 +9,21 @@ class IndividuoGrupalController extends Controller
 {
     public function index()
     {
-        $user = auth()->user();
+        $portal = session('portal', 'crea'); // 'crea' o 'edifica'
     
-        $query = \App\Models\Individuo::whereNotNull('codigo_serviu')
-            ->where('codigo_serviu', '!=', '');
+        // Determinar empresa según portal
+        $empresaId = $portal === 'crea' ? 1 : 2;
     
-        // Solo filtra por empresa si no es admin
-        if ($user->id_empresa != 0) {
-            $query->where('id_empresa', $user->id_empresa);
-        }
-    
-        $individuos = $query->orderBy('codigo_serviu')->get();
-    
-        if ($individuos->isEmpty()) {
-            dd('NO LLEGA NINGÚN INDIVIDUO CON CODIGO SERVIU Y id_empresa = ' . $user->id_empresa);
-        }
+        $individuos = \App\Models\Individuo::whereNotNull('codigo_serviu')
+            ->where('codigo_serviu', '!=', '')
+            ->where('id_empresa', $empresaId) // Aquí se filtra SIEMPRE por empresa según portal
+            ->orderBy('codigo_serviu')
+            ->get();
     
         $grupales = $individuos->groupBy('codigo_serviu');
     
-        return view('crea.individuos.grupales', compact('grupales'));
+        return view("$portal.individuos.grupales", compact('grupales'));
     }
     
-     
+    
 }

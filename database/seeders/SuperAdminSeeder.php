@@ -17,7 +17,10 @@ class SuperAdminSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(SuperAdminSeeder::class);
+        info('Entró al seeder de SuperAdmin');
         $usuario = User::create([
+            'id_empresa'=>'0',
             'name'=>'Admin',
             'email'=>'admin@admin.com',
             'password'=> bcrypt('12345678')

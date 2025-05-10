@@ -1,6 +1,7 @@
 @extends('edifca/layouts.app')
 
 @section('edifica/content')
+
 <section class="section">
     <div class="section-header">
         <h3 class="page__heading">Individuos Agrupados por Código SERVIU</h3>

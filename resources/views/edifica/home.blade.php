@@ -91,8 +91,8 @@
                                                 <td>{{ \Carbon\Carbon::parse($individuo->fecha_carnet)->format('d-m-Y') }}</td>
                                                 <td>{{ \Carbon\Carbon::parse($individuo->fecha_carnet)->diffInDays(now()) }}</td>
                                                 <td>
-                                                    <a href="{{ route('individuos.show', $individuo->id) }}" class="btn btn-sm btn-primary">Ver</a>
-                                                    <a href="{{ route('individuos.edit', $individuo->id) }}" class="btn btn-sm btn-warning">Editar</a>
+                                                    <a href="{{ route('edifica.individuos.show', $individuo->id) }}" class="btn btn-sm btn-primary">Ver</a>
+                                                    <a href="{{ route('edifica.individuos.edit', $individuo->id) }}" class="btn btn-sm btn-warning">Editar</a>
                                                 </td>
                                             </tr>
                                         @endforeach

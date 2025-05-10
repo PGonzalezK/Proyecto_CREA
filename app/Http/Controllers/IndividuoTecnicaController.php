@@ -10,51 +10,52 @@ use Illuminate\Support\Facades\File;
 class IndividuoTecnicaController extends Controller
 {
     public function index(Request $request)
-{
-    $search = $request->input('search');
+    {
+        $portal = session('portal', 'crea');
+        $empresaId = $portal === 'crea' ? 1 : 2; // admin también se filtra por portal
+        $search = $request->input('search');
 
-    // Filtrar individuos por código_serviu si hay búsqueda
-    $query = Individuo::whereNotNull('codigo_serviu')
-        ->where('codigo_serviu', '!=', '');
+        $query = Individuo::whereNotNull('codigo_serviu')
+            ->where('codigo_serviu', '!=', '')
+            ->where('id_empresa', $empresaId);
 
-    if ($search) {
-        $query->where('codigo_serviu', 'like', "%{$search}%");
+        if ($search) {
+            $query->where('codigo_serviu', 'like', "%{$search}%");
+        }
+
+        $individuos = $query->orderBy('codigo_serviu')->get()->groupBy('codigo_serviu');
+
+        // Paginación manual
+        $perPage = 15;
+        $page = $request->input('page', 1);
+        $total = $individuos->count();
+        $items = $individuos->slice(($page - 1) * $perPage, $perPage)->all();
+
+        $paginados = new \Illuminate\Pagination\LengthAwarePaginator(
+            $items, $total, $perPage, $page,
+            ['path' => $request->url(), 'query' => $request->query()]
+        );
+
+        return view("$portal.individuos.tecnica.index", [
+            'paginados' => $paginados,
+            'search' => $search
+        ]);
     }
-
-    // Obtener los individuos y agrupar por código_serviu
-    $individuos = $query->orderBy('codigo_serviu')->get()->groupBy('codigo_serviu');
-
-    // Paginación manual sobre los grupos
-    $perPage = 15;
-    $page = $request->input('page', 1);
-    $total = $individuos->count();
-
-    $items = $individuos->slice(($page - 1) * $perPage, $perPage)->all();
-    $paginados = new \Illuminate\Pagination\LengthAwarePaginator(
-        $items,
-        $total,
-        $perPage,
-        $page,
-        ['path' => $request->url(), 'query' => $request->query()]
-    );
-
-    return view('crea.individuos.tecnica.index', [
-        'paginados' => $paginados,
-        'search' => $search
-    ]);
-}
-
 
     public function show($codigo_serviu)
     {
-        // Obtener todos los individuos con ese código_serviu
-        $individuos = Individuo::where('codigo_serviu', $codigo_serviu)->get();
+        $portal = session('portal', 'crea');
+        $empresaId = $portal === 'crea' ? 1 : 2;
+
+        $individuos = Individuo::where('codigo_serviu', $codigo_serviu)
+            ->where('id_empresa', $empresaId)
+            ->get();
 
         if ($individuos->isEmpty()) {
-            return redirect()->route('crea.tecnica.index')->with('error', 'No se encontraron individuos con ese código SERVIU.');
+            return redirect()->route("$portal.tecnica.index")->with('error', 'No se encontraron individuos con ese código SERVIU.');
         }
 
-        return view('crea.individuos.tecnica.show', compact('codigo_serviu', 'individuos'));
+        return view("$portal.individuos.tecnica.show", compact('codigo_serviu', 'individuos'));
     }
 
     public function upload(Request $request, $codigo_serviu)
@@ -64,8 +65,9 @@ class IndividuoTecnicaController extends Controller
             'carpeta' => 'required|string'
         ]);
 
+        $portal = session('portal', 'crea');
         $carpeta = $request->input('carpeta');
-        $ruta = "tecnica/$codigo_serviu/$carpeta";
+        $ruta = "$portal/tecnica/$codigo_serviu/$carpeta";
 
         foreach ($request->file('archivos') as $archivo) {
             $archivo->storeAs("public/$ruta", $archivo->getClientOriginalName());
@@ -81,10 +83,11 @@ class IndividuoTecnicaController extends Controller
             'carpeta_padre' => 'nullable|string'
         ]);
 
+        $portal = session('portal', 'crea');
         $carpetaPadre = $request->input('carpeta_padre', '');
         $nuevaCarpeta = trim($request->input('nueva_carpeta'));
 
-        $rutaCompleta = storage_path("app/public/tecnica/$codigo_serviu/" . ($carpetaPadre ? "$carpetaPadre/" : '') . $nuevaCarpeta);
+        $rutaCompleta = storage_path("app/public/$portal/tecnica/$codigo_serviu/" . ($carpetaPadre ? "$carpetaPadre/" : '') . $nuevaCarpeta);
 
         if (!File::exists($rutaCompleta)) {
             File::makeDirectory($rutaCompleta, 0775, true);
@@ -93,17 +96,19 @@ class IndividuoTecnicaController extends Controller
 
         return back()->with('error', 'La carpeta ya existe.');
     }
+
     public function eliminarCarpeta(Request $request, $codigo_serviu)
     {
         $request->validate([
             'carpeta' => 'required|string',
         ]);
 
+        $portal = session('portal', 'crea');
         $carpetaRelativa = $request->input('carpeta');
-        $rutaCompleta = storage_path("app/public/tecnica/$codigo_serviu/$carpetaRelativa");
+        $rutaCompleta = storage_path("app/public/$portal/tecnica/$codigo_serviu/$carpetaRelativa");
 
-        if (\File::exists($rutaCompleta)) {
-            \File::deleteDirectory($rutaCompleta);
+        if (File::exists($rutaCompleta)) {
+            File::deleteDirectory($rutaCompleta);
             return back()->with('success', 'Carpeta eliminada correctamente.');
         }
 

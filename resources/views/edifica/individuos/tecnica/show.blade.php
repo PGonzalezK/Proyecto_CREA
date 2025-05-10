@@ -23,6 +23,7 @@
                 <h5>Carpetas Técnicas</h5>
 
                 @php
+                $portal = session('portal', 'edifica');
                 function mostrarCarpetasRecursivas($path, $codigo_serviu, $relativa, &$carpetaIdCounter = 0)
                 {
                 $carpetas = \File::directories($path);
@@ -66,7 +67,7 @@
                             // Botón eliminar carpeta
                             if ($relativa !=='' ) { // para evitar que se elimine la raíz
                             echo "
-        <form action='" . route('edifica.tecnica.eliminarCarpeta', $codigo_serviu) . "' method='POST' onsubmit='return confirm(\" ¿Estás seguro que deseas eliminar esta carpeta y todo su contenido?\")' class='mb-3'>
+                <form action='" . route('edifica.tecnica.eliminarCarpeta', $codigo_serviu) . "' method='POST' onsubmit='return confirm(\" ¿Estás seguro que deseas eliminar esta carpeta y todo su contenido?\")' class='mb-3'>
                             " . csrf_field() . method_field('DELETE') . "
                             <input type='hidden' name='carpeta' value='$relativa'>
                             <button type='submit' class='btn btn-sm btn-danger'>Eliminar carpeta</button>
@@ -79,7 +80,7 @@
                         echo "<ul>";
                             foreach ($archivos as $archivo) {
                             $nombreArchivo = $archivo->getFilename();
-                            $rutaWeb = asset("storage/tecnica/$codigo_serviu/$relativa/$nombreArchivo");
+                            $rutaWeb = asset("storage/$portal/tecnica/$codigo_serviu/$relativa/$nombreArchivo");
                             echo "<li>📄 <a href='$rutaWeb' target='_blank'>$nombreArchivo</a></li>";
                             }
                             echo "</ul>";
@@ -97,13 +98,16 @@
                 @endphp
 
                 @php
-                $basePath = storage_path("app/public/tecnica/$codigo_serviu");
+                $portal = session('portal', 'edifica');
+                $basePath = storage_path("app/public/$portal/tecnica/$codigo_serviu");
+
                 if (!\File::exists($basePath)) {
                 \File::makeDirectory($basePath, 0775, true);
                 }
                 $contador = 0;
                 mostrarCarpetasRecursivas($basePath, $codigo_serviu, '', $contador);
                 @endphp
+
 
             </div>
         </div>

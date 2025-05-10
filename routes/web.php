@@ -33,7 +33,9 @@ Route::prefix('crea')->name('crea.')->middleware(['auth', 'portal.access'])->gro
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('individuos', IndividuoController::class);
-
+    
+    Route::delete('/{portal}/individuos/{id}/{archivo}/eliminar', [IndividuoController::class, 'eliminarArchivo'])
+    ->name('individuos.eliminarArchivo');
     Route::get('/tecnica', [IndividuoTecnicaController::class, 'index'])->name('tecnica.index');
     Route::get('/tecnica/{codigo_serviu}', [IndividuoTecnicaController::class, 'show'])->name('tecnica.show');
     Route::post('/tecnica/{codigo_serviu}/crear-carpeta', [IndividuoTecnicaController::class, 'crearCarpeta'])->name('tecnica.crearCarpeta');
@@ -42,6 +44,7 @@ Route::prefix('crea')->name('crea.')->middleware(['auth', 'portal.access'])->gro
 
     Route::post('/serviu/{codigo}/upload', [ServiuController::class, 'upload'])->name('serviu.upload');
     Route::delete('/serviu/{codigo}/{tipo}/eliminar', [ServiuController::class, 'eliminarArchivo'])->name('serviu.eliminar');
+    Route::delete('/serviu/{codigo}/{archivo}/eliminar', [ServiuController::class, 'eliminarArchivo'])->name('serviu.eliminar');
 
     Route::post('/profile/update', [UsuarioController::class, 'updateProfile'])->name('profile.update');
 });
@@ -59,6 +62,8 @@ Route::prefix('edifica')->name('edifica.')->middleware(['auth', 'portal.access']
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('individuos', IndividuoController::class);
 
+    Route::delete('/{portal}/individuos/{id}/{archivo}/eliminar', [IndividuoController::class, 'eliminarArchivo'])
+    ->name('individuos.eliminarArchivo');
     Route::get('/tecnica', [IndividuoTecnicaController::class, 'index'])->name('tecnica.index');
     Route::get('/tecnica/{codigo_serviu}', [IndividuoTecnicaController::class, 'show'])->name('tecnica.show');
     Route::post('/tecnica/{codigo_serviu}/crear-carpeta', [IndividuoTecnicaController::class, 'crearCarpeta'])->name('tecnica.crearCarpeta');
@@ -67,6 +72,7 @@ Route::prefix('edifica')->name('edifica.')->middleware(['auth', 'portal.access']
 
     Route::post('/serviu/{codigo}/upload', [ServiuController::class, 'upload'])->name('serviu.upload');
     Route::delete('/serviu/{codigo}/{tipo}/eliminar', [ServiuController::class, 'eliminarArchivo'])->name('serviu.eliminar');
+    Route::delete('/serviu/{codigo}/{archivo}/eliminar', [ServiuController::class, 'eliminarArchivo'])->name('serviu.eliminar');
 
     Route::post('/profile/update', [UsuarioController::class, 'updateProfile'])->name('profile.update');
 });

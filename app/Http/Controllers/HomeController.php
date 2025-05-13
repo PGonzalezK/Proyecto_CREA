@@ -25,12 +25,12 @@ class HomeController extends Controller
         $empresa = auth()->user()->id_empresa;
         $individuosPorVencer = Individuo::whereNotNull('fecha_carnet')
         ->whereBetween('fecha_carnet', [$hoy, $hoy->copy()->addDays(30)])
-        ->when($empresa > 0, fn($q) => $q->where('id_empresa', $empresa))
+        ->when($empresa = 1, fn($q) => $q->where('id_empresa', $empresa))
         ->get();
     
     $individuosVencidos = Individuo::whereNotNull('fecha_carnet')
         ->where('fecha_carnet', '<', $hoy)
-        ->when($empresa > 0, fn($q) => $q->where('id_empresa', $empresa))
+        ->when($empresa = 1, fn($q) => $q->where('id_empresa', $empresa))
         ->get();
 
         return view('crea.home', compact('individuosPorVencer', 'individuosVencidos'));
@@ -43,12 +43,12 @@ class HomeController extends Controller
     
         $individuosPorVencer = Individuo::whereNotNull('fecha_carnet')
             ->whereBetween('fecha_carnet', [$hoy, $hoy->copy()->addDays(30)])
-            ->when($empresa > 0, fn($q) => $q->where('id_empresa', $empresa))
+            ->when($empresa = 2, fn($q) => $q->where('id_empresa', $empresa))
             ->get();
     
         $individuosVencidos = Individuo::whereNotNull('fecha_carnet')
             ->where('fecha_carnet', '<', $hoy)
-            ->when($empresa > 0, fn($q) => $q->where('id_empresa', $empresa))
+            ->when($empresa = 2, fn($q) => $q->where('id_empresa', $empresa))
             ->get();
     
         return view('edifica.home', compact('individuosPorVencer', 'individuosVencidos'));

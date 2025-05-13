@@ -12,31 +12,26 @@ class ServiuController extends Controller
     public function upload(Request $request, $codigo)
     {
         $request->validate([
-            'carta_compromiso' => 'nullable|file|mimes:pdf,doc,docx',
-            'contrato_construccion' => 'nullable|file|mimes:pdf,doc,docx',
+            'archivo' => 'required|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:10240',
         ]);
-
-        // Carpeta de destino: Antecedentes Grupales/{codigo}
-        $folder = 'Antecedentes Grupales/' . $codigo;
-
-        if ($request->hasFile('carta_compromiso')) {
-            $request->file('carta_compromiso')->storeAs($folder, 'Carta_de_Compromiso.pdf', 'public');
+    
+        $portal = session('portal', 'crea');
+        $folder = "$portal/Antecedentes Grupales/$codigo";
+    
+        if ($request->hasFile('archivo')) {
+            $file = $request->file('archivo');
+            $nombreOriginal = $file->getClientOriginalName();
+            $file->storeAs("public/$folder", $nombreOriginal);
         }
-
-        if ($request->hasFile('contrato_construccion')) {
-            $request->file('contrato_construccion')->storeAs($folder, 'Contrato_de_Construccion.pdf', 'public');
-        }
-
-        return back()->with('success', 'Documentos subidos correctamente.');
+    
+        return back()->with('success', 'Archivo subido correctamente.');
     }
+    
 
     public function eliminarArchivo($codigo, $tipo)
     {
-        if (!in_array($tipo, ['Carta_de_Compromiso', 'Contrato_de_Construccion'])) {
-            abort(400, 'Tipo de archivo no válido');
-        }
-
-        $ruta = "Antecedentes Grupales/{$codigo}/{$tipo}.pdf";
+        $portal = session('portal', 'crea');
+        $ruta = "$portal/Antecedentes Grupales/{$codigo}/{$tipo}.pdf";
 
         if (Storage::disk('public')->exists($ruta)) {
             Storage::disk('public')->delete($ruta);

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-04-2025 a las 23:17:14
+-- Tiempo de generación: 09-05-2025 a las 05:38:54
 -- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.0.30
+-- Versión de PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -59,6 +59,7 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `individuos` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `id_empresa` int(11) NOT NULL,
   `nombre` varchar(191) NOT NULL,
   `apellido` varchar(191) NOT NULL,
   `rut` varchar(191) NOT NULL,
@@ -94,9 +95,11 @@ CREATE TABLE `individuos` (
 -- Volcado de datos para la tabla `individuos`
 --
 
-INSERT INTO `individuos` (`id`, `nombre`, `apellido`, `rut`, `codigo_serviu`, `fecha_carnet`, `anteproyecto`, `apruebase`, `cert_electrico`, `cert_sitio_eriazo`, `cert_avaluo_detallado`, `cert_informaciones_p`, `comite_agua`, `escritura`, `estudio`, `titulo`, `registro_social_hogares`, `carnet_identidad`, `carta_compromiso`, `contrato_construccion`, `te1`, `tc6`, `reduccion`, `permiso`, `recepcion_dom`, `prohibicion_1`, `prohibicion_2`, `autoricese`, `created_at`, `updated_at`) VALUES
-(1, 'pablo', 'gonzález', '20243551-k', '4030000', '2066-01-13', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-04-05 08:24:16', '2025-04-05 08:24:16'),
-(2, 'papa', 'aaa', '12312322-2', '1122', '2025-04-13', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-04-05 08:45:47', '2025-04-05 08:45:47');
+INSERT INTO `individuos` (`id`, `id_empresa`, `nombre`, `apellido`, `rut`, `codigo_serviu`, `fecha_carnet`, `anteproyecto`, `apruebase`, `cert_electrico`, `cert_sitio_eriazo`, `cert_avaluo_detallado`, `cert_informaciones_p`, `comite_agua`, `escritura`, `estudio`, `titulo`, `registro_social_hogares`, `carnet_identidad`, `carta_compromiso`, `contrato_construccion`, `te1`, `tc6`, `reduccion`, `permiso`, `recepcion_dom`, `prohibicion_1`, `prohibicion_2`, `autoricese`, `created_at`, `updated_at`) VALUES
+(1, 1, 'pablo', 'gonzález', '20243551-k', '4030000', '2066-01-13', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-04-05 08:24:16', '2025-04-05 08:24:16'),
+(2, 2, 'papa', 'aaa', '12312322-2', '1122', '2025-04-13', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-04-05 08:45:47', '2025-04-05 08:45:47'),
+(3, 1, 'a', 'b', '200', '1', '2025-05-07', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-05-09 07:07:41', '2025-05-09 07:07:41'),
+(4, 2, 'b', 'a', '199', '2', '2025-05-09', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2025-05-09 07:08:47', '2025-05-09 07:08:47');
 
 -- --------------------------------------------------------
 
@@ -153,7 +156,9 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 1),
-(4, 'App\\Models\\User', 5);
+(4, 'App\\Models\\User', 5),
+(4, 'App\\Models\\User', 6),
+(5, 'App\\Models\\User', 7);
 
 -- --------------------------------------------------------
 
@@ -238,7 +243,8 @@ CREATE TABLE `roles` (
 
 INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
 (1, 'admin', 'web', '2025-04-05 07:33:56', '2025-04-05 07:33:56'),
-(4, 'individuos', 'web', '2025-04-05 12:02:14', '2025-04-05 12:02:14');
+(4, 'individuos', 'web', '2025-04-05 12:02:14', '2025-04-05 12:02:14'),
+(5, 'Tex', 'web', '2025-05-09 07:25:05', '2025-05-09 07:25:05');
 
 -- --------------------------------------------------------
 
@@ -257,9 +263,14 @@ CREATE TABLE `role_has_permissions` (
 
 INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 (9, 4),
+(9, 5),
 (10, 4),
+(10, 5),
 (11, 4),
-(12, 4);
+(11, 5),
+(12, 4),
+(12, 5),
+(14, 5);
 
 -- --------------------------------------------------------
 
@@ -269,6 +280,7 @@ INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `id_empresa` enum('0','1','2') NOT NULL,
   `name` varchar(191) NOT NULL,
   `email` varchar(191) NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
@@ -282,9 +294,11 @@ CREATE TABLE `users` (
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Admin', 'admin@admin.com', NULL, '$2y$10$UDe6gV3qLHz1lzBwFVvUJ.IcA7ubAfNQ7oOeB43/VUHUeJG4ckDBi', NULL, '2025-04-05 07:33:56', '2025-04-05 07:33:56'),
-(5, '123', 'admin@lol.com', NULL, '$2y$10$.hqImaSNPCHkNV/ZJJF1n.yrobE15ohAuJJHV1QL9JqiPXdY90Vg6', NULL, '2025-04-05 12:02:47', '2025-04-05 12:02:47');
+INSERT INTO `users` (`id`, `id_empresa`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, '0', 'Admin', 'admin@admin.com', NULL, '$2y$10$UDe6gV3qLHz1lzBwFVvUJ.IcA7ubAfNQ7oOeB43/VUHUeJG4ckDBi', NULL, '2025-04-05 07:33:56', '2025-04-05 07:33:56'),
+(5, '0', '123', 'admin@lol.com', NULL, '$2y$10$.hqImaSNPCHkNV/ZJJF1n.yrobE15ohAuJJHV1QL9JqiPXdY90Vg6', NULL, '2025-04-05 12:02:47', '2025-04-05 12:02:47'),
+(6, '1', 'Pablo Gonzalez', 'pgonzalezk@ing.ucsc.cl', NULL, '$2y$10$rmEGerNUBJnT3t4IKWWJieWW.x.jM6JNIooHOKsPKV49VfIxZuEz.', NULL, '2025-05-09 07:03:21', '2025-05-09 07:03:21'),
+(7, '2', 'Bruno Figueroa', 'bfigueroau@ing.ucsc.cl', NULL, '$2y$10$vxOVJWBvR97YQGYs2C8ONuHcC4Nz0G0bJFrnjfUsm.A2O20axjdrG', NULL, '2025-05-09 07:03:40', '2025-05-09 07:04:14');
 
 --
 -- Índices para tablas volcadas
@@ -391,7 +405,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT de la tabla `individuos`
 --
 ALTER TABLE `individuos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `migrations`
@@ -415,13 +429,13 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Restricciones para tablas volcadas

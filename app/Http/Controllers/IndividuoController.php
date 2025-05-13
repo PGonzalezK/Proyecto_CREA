@@ -45,6 +45,7 @@ class IndividuoController extends Controller
             'rut' => 'required|string|max:255',
             'codigo_serviu' => 'nullable|string|max:255',
             'fecha_carnet' => 'nullable|date',
+            'id_empresa',
         ]);
 
         $fileFields = [

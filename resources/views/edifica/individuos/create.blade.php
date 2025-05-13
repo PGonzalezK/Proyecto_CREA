@@ -23,9 +23,11 @@
                             </div>
                         @endif
 
-                        {{-- Formulario --}}
                         <form action="{{ route('edifica.individuos.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
+
+                            {{-- Campo oculto para id_empresa --}}
+                            <input type="hidden" name="id_empresa" value="2">
 
                             {{-- Incluye los campos del formulario --}}
                             @include('edifica.individuos.form')

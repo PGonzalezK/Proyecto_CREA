@@ -31,7 +31,8 @@
                                     <td>{{ $individuo->apellido }}</td>
                                     <td>{{ $individuo->rut }}</td>
                                     <td>
-                                        <form action="{{ route('edifica.individuos.destroy',$individuo->id) }}" method="POST">
+                                        <form action="{{ route('edifica.individuos.destroy',$individuo->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar a {{ $individuo->nombre }} {{ $individuo->apellido }}? Esta acción no se puede deshacer.');">
+
                                             
                                             @can('ver-individuo')
                                             <a class="btn btn-primary btn-sm" href="{{ route('edifica.individuos.show', $individuo->id) }}">Ver</a>

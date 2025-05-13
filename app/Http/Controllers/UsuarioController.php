@@ -147,12 +147,30 @@ public function update(Request $request, $id)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        User::find($id)->delete();
-        $portal = session('portal', 'crea');
-        return redirect()->route("$portal.usuarios.index")->with('success', 'Usuario actualizado correctamente.');
+public function destroy($id)
+{
+    $user = User::find($id);
+
+    if (!$user) {
+        return back()->with('error', 'Usuario no encontrado.');
     }
+
+    // Evitar que el admin se elimine a sí mismo
+    if (auth()->id() == $user->id) {
+        return back()->with('error', 'No puedes eliminar tu propio usuario.');
+    }
+
+    // Por ejemplo: evitar eliminar usuarios con rol "SuperAdmin"
+    if ($user->hasRole('SuperAdmin')) {
+        return back()->with('error', 'No se puede eliminar un SuperAdmin.');
+    }
+
+    $user->delete();
+
+    $portal = session('portal', 'crea');
+    return redirect()->route("$portal.usuarios.index")->with('success', 'Usuario eliminado correctamente.');
+}
+
 
     public function updateProfile(Request $request)
     {

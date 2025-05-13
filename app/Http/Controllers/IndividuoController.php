@@ -25,6 +25,7 @@ class IndividuoController extends Controller
     public function index()
     {
         $portal = $this->getPortal();
+        
         $individuos = Individuo::where('id_empresa', $portal === 'crea' ? 1 : 2)->paginate(20);
         return view("$portal.individuos.index", compact('individuos'));
     }
@@ -45,7 +46,7 @@ class IndividuoController extends Controller
             'rut' => 'required|string|max:255',
             'codigo_serviu' => 'nullable|string|max:255',
             'fecha_carnet' => 'nullable|date',
-            'id_empresa',
+            'id_empresa' => 'required|integer|in:1,2',
         ]);
 
         $fileFields = [

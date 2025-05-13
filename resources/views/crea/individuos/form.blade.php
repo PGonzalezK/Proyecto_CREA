@@ -39,6 +39,16 @@
         <div class="col-md-4 mb-3">
             <label for="{{ $campo }}" class="form-label">{{ ucwords(str_replace('_', ' ', $campo)) }}</label>
             <input type="file" name="{{ $campo }}" id="{{ $campo }}" class="form-control">
+
+            @if(!empty($individuo->$campo))
+                <small class="form-text text-muted mt-1">
+                    Archivo actual:
+                    <a href="{{ asset('storage/' . $individuo->$campo) }}" target="_blank">
+                        {{ basename($individuo->$campo) }}
+                    </a>
+                </small>
+            @endif
         </div>
     @endforeach
 </div>
+

@@ -80,7 +80,7 @@ class IndividuoController extends Controller
         foreach ($fileFields as $field) {
             if ($request->hasFile($field)) {
                 $request->validate([
-                    $field => 'file|mimes:pdf,jpg,jpeg,png|max:2048'
+                    $field => 'file|mimes:pdf,jpg,jpeg,png|max:204800'
                 ]);
 
                 $archivo = $request->file($field);
@@ -154,7 +154,7 @@ class IndividuoController extends Controller
         foreach ($fileFields as $field) {
             if ($request->hasFile($field)) {
                 $request->validate([
-                    $field => 'file|mimes:pdf,jpg,jpeg,png|max:2048'
+                    $field => 'file|mimes:pdf,jpg,jpeg,png|max:204800'
                 ]);
 
                 $archivo = $request->file($field);

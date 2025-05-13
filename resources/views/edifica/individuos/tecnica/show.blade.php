@@ -39,16 +39,21 @@
                     </span>";
                     echo "<div class='contenido-carpeta' id='$id' style='display: none;'>";
 
-                        // Formulario subir archivos
-                        echo "
-                        <form action='" . route('edifica.tecnica.upload', $codigo_serviu) . "' method='POST' enctype='multipart/form-data' class='mt-2 mb-2'>
-                " . csrf_field() . "
-                <input type='hidden' name='carpeta' value='$relativa'>
-                <div class='input-group'>
-                    <input type='file' name='archivos[]' class='form-control' multiple required>
-                    <button type='submit' class='btn btn-sm btn-success'>Subir</button>
-                </div>
-            </form>" ;
+// Solo mostrar formulario de subida si no estamos en la carpeta raíz
+if ($relativa !== '') {
+    echo "
+    <form action='" . route('edifica.tecnica.upload', $codigo_serviu) . "' method='POST' enctype='multipart/form-data' class='mt-2 mb-2'>
+        " . csrf_field() . "
+        <input type='hidden' name='carpeta' value='$relativa'>
+        <div class='input-group'>
+            <input type='file' name='archivos[]' class='form-control' multiple required>
+            <button type='submit' class='btn btn-sm btn-success'>Subir</button>
+        </div>
+    </form>";
+} else {
+    echo "<p class='text-muted mt-2 mb-2'>No se permite subir archivos en esta carpeta. Cree una subcarpeta para organizar archivos.</p>";
+}
+
 
                             // Formulario crear subcarpeta
                             echo "

@@ -38,9 +38,16 @@
                                 <td>
                                   <a class="btn btn-warning btn-sm" href="{{ route('edifica.usuarios.edit', $usuario->id) }}">Editar</a>
 
-                                  {!! Form::open(['method' => 'DELETE','route' => ['edifica.usuarios.destroy', $usuario->id],'style'=>'display:inline']) !!}
-                                      {!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-sm']) !!}
-                                  {!! Form::close() !!}
+                                            {!! Form::open([
+                                                'method' => 'DELETE',
+                                                'route' => ['edifica.usuarios.destroy', $usuario->id],
+                                                'style' => 'display:inline',
+                                                'onsubmit' => "return confirm('¿Estás seguro de que deseas eliminar al usuario " . e($usuario->name) . "? Esta acción no se puede deshacer.');"
+                                            ]) !!}
+                                                {!! Form::submit('Borrar', ['class' => 'btn btn-danger btn-sm']) !!}
+                                            {!! Form::close() !!}
+
+
                                 </td>
                               </tr>
                             @endforeach

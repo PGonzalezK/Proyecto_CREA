@@ -185,5 +185,25 @@ public function update(Request $request, $id)
         return redirect("/$portal/home")->with('success', 'Perfil actualizado correctamente');
     }
 
+    public function cambiarContrasena(Request $request)
+{
+    $request->validate([
+        'password_current' => 'required',
+        'password' => 'required|confirmed|min:6',
+    ]);
+
+    $user = auth()->user();
+
+    if (!Hash::check($request->password_current, $user->password)) {
+        return back()->withErrors(['password_current' => 'La contraseña actual no es correcta.']);
+    }
+
+    $user->update([
+        'password' => Hash::make($request->password)
+    ]);
+
+    $portal = session('portal', 'crea');
+    return redirect("/$portal/home")->with('success', 'Contraseña actualizada correctamente');
+}
 
 }

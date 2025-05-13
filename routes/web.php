@@ -23,6 +23,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::prefix('crea')->name('crea.')->middleware(['auth', 'portal.access'])->group(function () {
     Route::get('/home', [HomeController::class, 'indexCrea'])->name('home');
     Route::get('/individuos/grupales', [IndividuoGrupalController::class, 'index'])->name('individuos.grupales');
+    Route::post('/cambiar-contrasena', [UsuarioController::class, 'cambiarContrasena'])->name('usuarios.cambiar-contrasena');
 
     Route::get('/grupos', function () {
         return view('crea.individuos.grupales', ['grupales' => collect([])]);
@@ -56,7 +57,7 @@ Route::prefix('crea')->name('crea.')->middleware(['auth', 'portal.access'])->gro
 Route::prefix('edifica')->name('edifica.')->middleware(['auth', 'portal.access'])->group(function () {
     Route::get('/home', [HomeController::class, 'indexEdifica'])->name('home');
     Route::get('/individuos/grupales', [IndividuoGrupalController::class, 'index'])->name('individuos.grupales');
-
+    Route::post('/cambiar-contrasena', [UsuarioController::class, 'cambiarContrasena'])->name('usuarios.cambiar-contrasena');
     Route::get('/grupos', function () {
         return view('edifica.individuos.grupales', ['grupales' => collect([])]);
     });

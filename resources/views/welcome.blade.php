@@ -80,12 +80,6 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group form-check mb-4">
-                                <input type="checkbox" class="form-check-input" id="remember" name="remember"
-                                       {{ old('remember') ? 'checked' : '' }}>
-                                <label class="form-check-label" for="remember">Recordarme</label>
-                            </div>
-
                             <button type="submit" class="btn btn-dark w-100 mb-3">Ingresar</button>
 
                             @if (Route::has('password.request'))

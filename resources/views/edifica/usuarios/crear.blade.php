@@ -35,9 +35,9 @@
                                 <div class="form-group">
                                     <label for="">Empresa</label>
                                     {!! Form::select('id_empresa', [
-                                    '0' => 'Ambas empresas',
-                                    '1' => 'Solo Empresa 1',
-                                    '2' => 'Solo Empresa 2'
+
+                                    '1' => 'Crea',
+                                    '2' => 'Edifica'
                                     ], null, ['class' => 'form-control', 'placeholder' => 'Seleccione una opción']) !!}
 
                                 </div>

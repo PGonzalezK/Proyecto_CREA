@@ -40,7 +40,7 @@
 
                             {{-- Archivos existentes --}}
                             @php
-                                $carpeta = "Antecedentes Grupales/$codigo";
+                                $carpeta = "crea/Antecedentes Grupales/$codigo";
                                 $archivos = Storage::disk('public')->exists($carpeta)
                                     ? Storage::disk('public')->files($carpeta)
                                     : [];
@@ -62,11 +62,11 @@
                                             <small class="text-muted">{{ $nombreArchivo }}</small>
                                         </div>
                                         <div class="btn-group">
-                                            <a href="{{ $url }}" target="_blank" class="btn btn-sm btn-outline-primary">Ver</a>
+                                            <a href="{{ $url }}" target="_blank" class="btn btn-sm btn-primary">Ver</a>
                                             <form action="{{ route('crea.serviu.eliminar', ['codigo' => $codigo, 'tipo' => pathinfo($nombreArchivo, PATHINFO_FILENAME)]) }}" method="POST" onsubmit="return confirm('¿Eliminar archivo {{ $nombreArchivo }}?')">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                                                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                             </form>
                                         </div>
                                     </li>

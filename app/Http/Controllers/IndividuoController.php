@@ -47,12 +47,55 @@ class IndividuoController extends Controller
             'fecha_carnet' => 'nullable|date',
         ]);
 
-        $data['id_empresa'] = $portal === 'crea' ? 1 : 2;
+        $fileFields = [
+            'carnet_identidad',
+            'carta_compromiso',
+            'contrato_construccion',
+            'anteproyecto',
+            'apruebase',
+            'cert_electrico',
+            'cert_sitio_eriazo',
+            'cert_avaluo_detallado',
+            'cert_informaciones_p',
+            'comite_agua',
+            'escritura',
+            'estudio',
+            'titulo',
+            'registro_social_hogares',
+            'te1',
+            'tc6',
+            'reduccion',
+            'permiso',
+            'recepcion_dom',
+            'prohibicion_1',
+            'prohibicion_2',
+            'autoricese'
+        ];
 
+        $nombreCompleto = str_replace(' ', '_', $data['nombre'] . '_' . $data['apellido']);
+        $folder = "$portal/Individuos/$nombreCompleto";
+
+        foreach ($fileFields as $field) {
+            if ($request->hasFile($field)) {
+                $request->validate([
+                    $field => 'file|mimes:pdf,jpg,jpeg,png|max:2048'
+                ]);
+
+                $archivo = $request->file($field);
+                $nombreOriginal = $archivo->getClientOriginalName();
+                $rutaAlmacenamiento = "$folder/$nombreOriginal";
+
+                $archivo->storeAs("public/$folder", $nombreOriginal);
+                $data[$field] = $rutaAlmacenamiento;
+            }
+        }
+
+        $data['id_empresa'] = $portal === 'crea' ? 1 : 2;
         Individuo::create($data);
 
         return redirect()->route("$portal.individuos.index")->with('success', 'Individuo creado correctamente.');
     }
+
 
     public function show(Individuo $individuo)
     {
@@ -172,13 +215,12 @@ class IndividuoController extends Controller
         $individuo = Individuo::findOrFail($id);
         $nombreCompleto = str_replace(' ', '_', $individuo->nombre . '_' . $individuo->apellido);
         $ruta = "$portal/Individuos/$nombreCompleto/$archivo";
-    
+
         if (Storage::disk('public')->exists($ruta)) {
             Storage::disk('public')->delete($ruta);
             return back()->with('success', 'Archivo eliminado correctamente.');
         }
-    
+
         return back()->with('error', 'El archivo no existe.');
     }
-    
 }

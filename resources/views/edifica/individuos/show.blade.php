@@ -42,7 +42,7 @@
                                     <small class="text-muted">{{ $nombreArchivo }}</small>
                                 </div>
                                 <div class="btn-group">
-                                    <a href="{{ $url }}" target="_blank" class="btn btn-sm btn-outline-primary">Ver</a>
+                                    <a href="{{ $url }}" target="_blank" class="btn btn-sm btn-primary">Ver</a>
                                     <form action="{{ route($portal . '.individuos.eliminarArchivo', [
                                         'portal' => $portal,
                                         'id' => $individuo->id,
@@ -50,7 +50,7 @@
                                     ]) }}" method="POST" onsubmit="return confirm('¿Seguro que deseas eliminar este archivo?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
+                                        <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                                     </form>
                                 </div>
                             </li>

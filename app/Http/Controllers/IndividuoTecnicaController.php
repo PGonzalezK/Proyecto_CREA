@@ -32,7 +32,10 @@ class IndividuoTecnicaController extends Controller
         $items = $individuos->slice(($page - 1) * $perPage, $perPage)->all();
 
         $paginados = new \Illuminate\Pagination\LengthAwarePaginator(
-            $items, $total, $perPage, $page,
+            $items,
+            $total,
+            $perPage,
+            $page,
             ['path' => $request->url(), 'query' => $request->query()]
         );
 
@@ -113,5 +116,23 @@ class IndividuoTecnicaController extends Controller
         }
 
         return back()->with('error', 'La carpeta no existe o ya fue eliminada.');
+    }
+
+    public function eliminarArchivo(Request $request, $codigo_serviu)
+    {
+        $request->validate([
+            'archivo' => 'required|string',
+        ]);
+
+        $portal = session('portal', 'crea');
+        $archivoRelativo = $request->input('archivo');
+        $rutaCompleta = storage_path("app/public/$portal/tecnica/$codigo_serviu/$archivoRelativo");
+
+        if (File::exists($rutaCompleta)) {
+            File::delete($rutaCompleta);
+            return back()->with('success', 'Archivo eliminado correctamente.');
+        }
+
+        return back()->with('error', 'El archivo no existe o ya fue eliminado.');
     }
 }

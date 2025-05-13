@@ -1,4 +1,4 @@
-@extends('edifca/layouts.app')
+@extends('edifica/layouts.app')
 
 @section('edifica/content')
 
@@ -24,65 +24,54 @@
                                 Código SERVIU: {{ $codigo }} ({{ count($individuos) }} individuos)
                             </summary>
 
-                            <form action="{{ route('serviu.upload', $codigo) }}" method="POST" enctype="multipart/form-data" class="mb-3">
+                            <form action="{{ route('edifica.serviu.upload', $codigo) }}" method="POST" enctype="multipart/form-data" class="mb-3">
                                 @csrf
                                 <div class="row align-items-end">
-                                    <div class="col-md-4">
-                                        <label for="carta_{{ $codigo }}">Carta de Compromiso:</label>
-                                        <input type="file" name="carta_compromiso" id="carta_{{ $codigo }}" class="form-control">
-                                        @php
-                                        $rutaCarta = 'Antecedentes Grupales/' . $codigo . '/Carta_de_Compromiso.pdf';
-                                        @endphp
-
-                                        @if (Storage::disk('public')->exists($rutaCarta))
-                                        <a href="{{ asset('storage/' . $rutaCarta) }}" target="_blank" class="btn btn-sm btn-outline-primary mt-2">Ver Carta</a>
-                                        @endif
+                                    <div class="col-md-8">
+                                        <label for="archivos_{{ $codigo }}">Subir nuevo archivo:</label>
+                                        <input type="file" name="archivo" id="archivos_{{ $codigo }}" class="form-control" required>
                                     </div>
-
                                     <div class="col-md-4">
-                                        <label for="contrato_{{ $codigo }}">Contrato de Construcción:</label>
-                                        <input type="file" name="contrato_construccion" id="contrato_{{ $codigo }}" class="form-control">
-                                        @php
-                                        $rutaContrato = 'Antecedentes Grupales/' . $codigo . '/Contrato_de_Construccion.pdf';
-                                        @endphp
-
-                                        @if (Storage::disk('public')->exists($rutaContrato))
-                                        <a href="{{ asset('storage/' . $rutaContrato) }}" target="_blank" class="btn btn-sm btn-outline-success mt-2">Ver Contrato</a>
-                                        @endif
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <button type="submit" class="btn btn-primary mt-4">Subir Documentos</button>
+                                        <button type="submit" class="btn btn-primary mt-4">Subir Documento</button>
                                     </div>
                                 </div>
                             </form>
 
-                            {{-- FORMULARIOS DE ELIMINACIÓN FUERA DEL FORMULARIO PRINCIPAL --}}
-                            <div class="row mt-2">
-                                <div class="col-md-4">
-                                    @if (Storage::disk('public')->exists($rutaCarta))
-                                    <form action="{{ route('serviu.eliminar', ['codigo' => $codigo, 'tipo' => 'Carta_de_Compromiso']) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Seguro que deseas eliminar la carta?')">
-                                            Eliminar Carta
-                                        </button>
-                                    </form>
-                                    @endif
-                                </div>
-
-                                <div class="col-md-4">
-                                    @if (Storage::disk('public')->exists($rutaContrato))
-                                    <form action="{{ route('serviu.eliminar', ['codigo' => $codigo, 'tipo' => 'Contrato_de_Construccion']) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-outline-danger" onclick="return confirm('¿Seguro que deseas eliminar el contrato?')">
-                                            Eliminar Contrato
-                                        </button>
-                                    </form>
-                                    @endif
-                                </div>
+                            {{-- Archivos existentes --}}
+                            @php
+                            $carpeta = "edifica/Antecedentes Grupales/$codigo";
+                            $archivos = Storage::disk('public')->exists($carpeta)
+                            ? Storage::disk('public')->files($carpeta)
+                            : [];
+                            @endphp
+                            @if (count($archivos))
+                            <div class="mt-3">
+                                <strong>Archivos Subidos:</strong>
+                                <ul class="list-group mt-2">
+                                    @foreach ($archivos as $archivo)
+                                    @php
+                                    $nombreArchivo = basename($archivo);
+                                    $url = asset('storage/' . $archivo);
+                                    $nombreLimpio = ucwords(str_replace(['_', '.pdf', '.jpg', '.jpeg', '.png'], [' ', '', '', '', ''], $nombreArchivo));
+                                    @endphp
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            📄 <strong>{{ $nombreLimpio }}</strong><br>
+                                            <small class="text-muted">{{ $nombreArchivo }}</small>
+                                        </div>
+                                        <div class="btn-group">
+                                            <a href="{{ $url }}" target="_blank" class="btn btn-sm btn-primary">Ver</a>
+                                            <form action="{{ route('edifica.serviu.eliminar', ['codigo' => $codigo, 'tipo' => pathinfo($nombreArchivo, PATHINFO_FILENAME)]) }}" method="POST" onsubmit="return confirm('¿Eliminar archivo {{ $nombreArchivo }}?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                            </form>
+                                        </div>
+                                    </li>
+                                    @endforeach
+                                </ul>
                             </div>
+                            @endif
                             <table class="table table-striped mt-3">
                                 <thead style="background-color:#6777ef">
                                     <tr>
@@ -102,7 +91,7 @@
                                         <td>{{ $individuo->rut }}</td>
                                         <td>
                                             @can('ver-individuo')
-                                            <a class="btn btn-info btn-sm" href="{{ route('individuos.show', $individuo->id) }}">
+                                            <a class="btn btn-info btn-sm" href="{{ route('edifica.individuos.show', $individuo->id) }}">
                                                 Ver Detalle
                                             </a>
                                             @endcan

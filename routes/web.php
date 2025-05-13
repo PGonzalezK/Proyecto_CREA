@@ -33,7 +33,8 @@ Route::prefix('crea')->name('crea.')->middleware(['auth', 'portal.access'])->gro
     Route::resource('roles', RolController::class);
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('individuos', IndividuoController::class);
-    
+
+
     Route::delete('/{portal}/individuos/{id}/{archivo}/eliminar', [IndividuoController::class, 'eliminarArchivo'])
     ->name('individuos.eliminarArchivo');
     Route::get('/tecnica', [IndividuoTecnicaController::class, 'index'])->name('tecnica.index');
@@ -41,10 +42,12 @@ Route::prefix('crea')->name('crea.')->middleware(['auth', 'portal.access'])->gro
     Route::post('/tecnica/{codigo_serviu}/crear-carpeta', [IndividuoTecnicaController::class, 'crearCarpeta'])->name('tecnica.crearCarpeta');
     Route::delete('/tecnica/{codigo_serviu}/eliminar-carpeta', [IndividuoTecnicaController::class, 'eliminarCarpeta'])->name('tecnica.eliminarCarpeta');
     Route::post('/tecnica/{codigo_serviu}/upload', [IndividuoTecnicaController::class, 'upload'])->name('tecnica.upload');
+    Route::delete('/tecnica/{codigo_serviu}/archivo', [IndividuoTecnicaController::class, 'eliminarArchivo'])->name('tecnica.eliminarArchivo');
 
     Route::post('/serviu/{codigo}/upload', [ServiuController::class, 'upload'])->name('serviu.upload');
     Route::delete('/serviu/{codigo}/{tipo}/eliminar', [ServiuController::class, 'eliminarArchivo'])->name('serviu.eliminar');
-    Route::delete('/serviu/{codigo}/{archivo}/eliminar', [ServiuController::class, 'eliminarArchivo'])->name('serviu.eliminar');
+    Route::delete('crea/serviu/{codigo}/{archivo}/eliminar', [ServiuController::class, 'eliminarArchivo'])->name('crea.serviu.eliminar');
+
 
     Route::post('/profile/update', [UsuarioController::class, 'updateProfile'])->name('profile.update');
 });
@@ -69,10 +72,11 @@ Route::prefix('edifica')->name('edifica.')->middleware(['auth', 'portal.access']
     Route::post('/tecnica/{codigo_serviu}/crear-carpeta', [IndividuoTecnicaController::class, 'crearCarpeta'])->name('tecnica.crearCarpeta');
     Route::delete('/tecnica/{codigo_serviu}/eliminar-carpeta', [IndividuoTecnicaController::class, 'eliminarCarpeta'])->name('tecnica.eliminarCarpeta');
     Route::post('/tecnica/{codigo_serviu}/upload', [IndividuoTecnicaController::class, 'upload'])->name('tecnica.upload');
+    Route::delete('/tecnica/{codigo_serviu}/archivo', [IndividuoTecnicaController::class, 'eliminarArchivo'])->name('tecnica.eliminarArchivo');
 
     Route::post('/serviu/{codigo}/upload', [ServiuController::class, 'upload'])->name('serviu.upload');
     Route::delete('/serviu/{codigo}/{tipo}/eliminar', [ServiuController::class, 'eliminarArchivo'])->name('serviu.eliminar');
-    Route::delete('/serviu/{codigo}/{archivo}/eliminar', [ServiuController::class, 'eliminarArchivo'])->name('serviu.eliminar');
+    Route::delete('edifica/serviu/{codigo}/{archivo}/eliminar', [ServiuController::class, 'eliminarArchivo'])->name('edifica.serviu.eliminar');
 
     Route::post('/profile/update', [UsuarioController::class, 'updateProfile'])->name('profile.update');
 });

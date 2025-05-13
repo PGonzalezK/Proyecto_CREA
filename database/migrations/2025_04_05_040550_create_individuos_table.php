@@ -15,7 +15,7 @@ class CreateIndividuosTable extends Migration
     {
         Schema::create('individuos', function (Blueprint $table) {
             $table->id();
-            $table->unsignedTinyInteger('id_empresa')->nullable(); // o ->default(1)
+            $table->integer('id_empresa');
             $table->string('nombre');
             $table->string('apellido');
             $table->string('rut');
